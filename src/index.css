@@ -742,7 +742,7 @@ ul.submenu li:first-child a {
   top: -18px;
   width: clamp(28px, 2vw, 38px);
   height: clamp(27px, 1.93vw, 37px);
-  background: url(../images/download.svg) center / contain no-repeat;
+  background: url('./assets/figma-exported/icons.png') 50% / contain no-repeat;
 }
 
 .page-main-custom .info-grid {
@@ -1369,7 +1369,7 @@ a {
   grid-template-columns: minmax(0, 1fr) clamp(280px, 18.75vw, 360px);
   align-items: center;
   gap: clamp(28px, 3.95vw, 76px);
-  min-height: clamp(300px, 19.65vw, 377px);
+  min-height: clamp(300px, 25.6vw, 377px) !important;
   padding: 58px 0;
   display: grid;
   padding-top: clamp(38px, 3.02vw, 58px);
@@ -1677,14 +1677,28 @@ a {
 .careers-page .jobs-section .page-section__heading:before,
 .careers-page .page-section:not(.jobs-section):not(.process-section):not(.careers-care):has(.info-grid) .page-section__heading:before {
   content: "";
-  background: url('http://localhost:5174/assets/figma-exported/dom-care-heading-arrow.svg') 50% / contain no-repeat;
+  background: url('./assets/figma-exported/icons.png') 50% / contain no-repeat;
   width: clamp(25px, 1.98vw, 38px);
   height: clamp(24px, 1.93vw, 37px);
   position: absolute;
   top: 0;
   left: 0;
 }
-
+.hvs-visual img {
+    max-width: 98%;
+}
+.investigator-trial-page .page-main-custom .page-section__heading {
+    text-align: left;
+   
+}
+.InfoGrid-heading img.section-mark.section-mark--team {
+    position: absolute;
+    position: absolute;
+    width: 38px;
+    height: 37px;
+    right: 590px;
+    top: -25px;
+}
 .careers-page .process-section .page-section__heading h2,
 .careers-page .jobs-section .page-section__heading h2,
 .careers-page .page-section:not(.jobs-section):not(.process-section):not(.careers-care):has(.info-grid) .page-section__heading h2 {

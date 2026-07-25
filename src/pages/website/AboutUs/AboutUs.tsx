@@ -1,9 +1,9 @@
 import React from "react";
 import { CareCta } from "@/components/common/CareCta";
 import { CareProcessSection } from "@/components/common/CareProcessSection";
-import LogoSection from "@/components/website/home/LogoSection";
+import AboutLogoSection from "@/components/website/home/AboutLogoSection";
 import { TeamVideos } from "@/components/website/home/TeamVideos";
-import { InfoGrid, InnerHero, PageShell, SplitSection } from "@/components/pages/InnerPages";
+import { InfoGrid, InnerHero, PageShell, SplitSectionReverse } from "@/components/pages/InnerPages";
 import { aboutRecognition, aboutValues } from "@/data/pages";
 import { asset } from "@/data/site";
 
@@ -12,13 +12,12 @@ const AboutPage: React.FC = () => {
     <PageShell>
       <div className="about-page">
         <InnerHero
-          eyebrow="About Rumax Limited"
           title="About Rumax Limited"
           description="Rumax Limited is one of the leading that simultaneously holds CQC registration for domiciliary care and delivers ICH-GCP-compliant clinical trials homecare nursing at a national scale, under a single governance framework and a single point of accountability."
           backgroundImage="rumax-team-hero.png"
         />
         
-        <SplitSection
+        <SplitSectionReverse
           title="Our Story"
           image="about-story-banner.png"
           imageAlt="Rumax care team standing beside Rumax banner"
@@ -30,7 +29,7 @@ const AboutPage: React.FC = () => {
           ]}
         />
         
-        <LogoSection />
+        <AboutLogoSection />
         
         <InfoGrid title="Our Values" items={aboutValues} />
         

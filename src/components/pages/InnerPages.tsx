@@ -124,7 +124,25 @@ export function SplitSection({ eyebrow, title, body, image, imageAlt, reverse }:
     </section>
   );
 }
-
+export function SplitSectionReverse({ eyebrow, title, body, image, imageAlt, reverse }: SplitSectionProps) {
+  return (
+    <section className={`page-section split-section${reverse ? " split-section--reverse" : ""}`}>
+      <div className="container split-section__inner">
+        
+        <div className="split-section__copy">
+          {eyebrow ? <span className="page-eyebrow">{eyebrow}</span> : null}
+          <h2>{title}</h2>
+          {body.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+        <div className="split-section__media">
+          <img src={asset(image)} alt={imageAlt} />
+        </div>
+      </div>
+    </section>
+  );
+}
 export function InfoGrid({ eyebrow, title, intro, items, columns = "three" }: InfoGridProps) {
   return (
     <section className="InfoGrid">
@@ -134,7 +152,7 @@ export function InfoGrid({ eyebrow, title, intro, items, columns = "three" }: In
           {eyebrow && (
             <span className="InfoGrid-eyebrow">{eyebrow}</span>
           )}
-          <img src="/assets/figma-exported/rumax-team-mark.svg" alt="" className="section-mark section-mark--team" aria-hidden="true"></img>
+          <img src="/assets/figma-exported/rumax-team-mark.png" alt="" className="section-mark section-mark--team" aria-hidden="true"></img>
           <h2>{title}</h2>
 
           {intro && <p>{intro}</p>}
