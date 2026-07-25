@@ -742,7 +742,7 @@ ul.submenu li:first-child a {
   top: -18px;
   width: clamp(28px, 2vw, 38px);
   height: clamp(27px, 1.93vw, 37px);
-  background: url('./assets/figma-exported/icons.png') 50% / contain no-repeat;
+  background: url('./figma-exported/icons.png') 50% / contain no-repeat;
 }
 
 .page-main-custom .info-grid {
@@ -1357,7 +1357,7 @@ a {
 }
 
 .inner-hero {
-  --inner-hero-bg: url('http://localhost:5174/assets/figma-exported/rumax-team-hero.png');
+  --inner-hero-bg: url('./figma-exported/rumax-team-hero.png');
   color: var(--white);
   background: linear-gradient(90deg, #13185bfa 0%, #13185beb 42%, #13185b6b 68%, #13185b05 100%),
     var(--inner-hero-bg) center/cover no-repeat,
@@ -1513,7 +1513,7 @@ a {
 
 .jobs-section {
   background: linear-gradient(#f8f7f4f0, #f8f7f4f0),
-    url('http://localhost:5174/assets/figma-exported/rumax-hex-bg.png') 50% / cover no-repeat;
+    url('./figma-exported/rumax-hex-bg.png') 50% / cover no-repeat;
 }
 
 .job-card-grid {
@@ -1677,7 +1677,7 @@ a {
 .careers-page .jobs-section .page-section__heading:before,
 .careers-page .page-section:not(.jobs-section):not(.process-section):not(.careers-care):has(.info-grid) .page-section__heading:before {
   content: "";
-  background: url('./assets/figma-exported/icons.png') 50% / contain no-repeat;
+  background: url('./figma-exported/icons.png') 50% / contain no-repeat;
   width: clamp(25px, 1.98vw, 38px);
   height: clamp(24px, 1.93vw, 37px);
   position: absolute;
@@ -1741,7 +1741,7 @@ a {
 
 .careers-page .jobs-section {
   background: linear-gradient(#f8f7f4f0, #f8f7f4f0),
-    url('http://localhost:5174/assets/figma-exported/rumax-hex-bg.png') 50% / cover no-repeat;
+    url('./figma-exported/rumax-hex-bg.png') 50% / cover no-repeat;
   padding-top: clamp(62px, 4.95vw, 95px);
   padding-bottom: clamp(62px, 5vw, 96px);
 }
@@ -1858,7 +1858,7 @@ a {
 
 .careers-care__copy li:before {
   content: "";
-  background: url('http://localhost:5174/assets/figma-exported/dom-care-list-check.svg') 50% / contain no-repeat;
+  background: url('./figma-exported/dom-care-list-check.svg') 50% / contain no-repeat;
   width: clamp(16px, 1.04vw, 20px);
   height: clamp(16px, 1.04vw, 20px);
   position: absolute;
@@ -3175,7 +3175,7 @@ a {
 .cookie-types-band h2:before,
 .cookie-table-section h2:before {
   content: "";
-  background: url('http://localhost:5174/assets/figma-exported/dom-care-heading-arrow.svg') 50% / contain no-repeat;
+  background: url('./figma-exported/dom-care-heading-arrow.svg') 50% / contain no-repeat;
   width: clamp(30px, 1.98vw, 38px);
   height: clamp(29px, 1.93vw, 37px);
   position: absolute;
@@ -3209,16 +3209,16 @@ a {
   display: block;
 }
 .cookie-type-card__icon--1 {
-  background-image: url('http://localhost:5174/assets/figma-exported/cookie-icon-necessary.svg');
+  background-image: url('./figma-exported/cookie-icon-necessary.svg');
 }
 .cookie-type-card__icon--2 {
-  background-image: url('http://localhost:5174/assets/figma-exported/cookie-icon-analytical.svg');
+  background-image: url('./figma-exported/cookie-icon-analytical.svg');
 }
 .cookie-type-card__icon--3 {
-  background-image: url('http://localhost:5174/assets/figma-exported/cookie-icon-functionality.svg');
+  background-image: url('./figma-exported/cookie-icon-functionality.svg');
 }
 .cookie-type-card__icon--4 {
-  background-image: url('http://localhost:5174/assets/figma-exported/cookie-icon-targeting.svg');
+  background-image: url('./figma-exported/cookie-icon-targeting.svg');
 }
 .cookie-type-card__number {
   color: #0e2a471c;
