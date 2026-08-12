@@ -29,8 +29,10 @@ export default function ContactPage() {
       />
 
       <ContactCards items={contactMethods} />
- <MapBand />
 
+      <TabbedAssessmentForm activeTab={activeTab} />
+
+      <MapBand />
 
       <CareCta />
     </PageShell>

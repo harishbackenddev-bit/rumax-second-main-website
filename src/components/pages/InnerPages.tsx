@@ -3,6 +3,7 @@ import { asset } from "@/data/site";
 import type { InfoItem, PolicySection } from "@/data/pages";
 import { HeroCallbackCard } from "@/components/common/HeroCallbackCard";
 import { FormInputField, FormSelectField, FormTextareaField } from "@/components/pages/PageFormControls";
+import { useNavigate } from "react-router-dom";
 
 type PageShellProps = {
   children: ReactNode;
@@ -38,7 +39,7 @@ type InfoGridProps = {
   title: string;
   intro?: string;
   items: InfoItem[];
-  columns?: "two" | "three";
+  columns?: "two" | "three" | "four";
 };
 
 type StepsProps = {
@@ -70,7 +71,7 @@ export function InnerHero({ actions, className, eyebrow, title, description, ima
       className={`inner-hero${showCallback ? " inner-hero--with-card" : ""}${className ? ` ${className}` : ""}`}
       style={backgroundImage ? ({ "--inner-hero-bg": `url("${asset(backgroundImage)}")` } as CSSProperties) : undefined}
     >
-      {showScrollCue ? <InnerScrollCue /> : null}
+      {/* {showScrollCue ? <InnerScrollCue /> : null} */}
       <div className="container inner-hero__inner">
         <div className="inner-hero__copy">
           {eyebrow ? <span className="page-eyebrow">{eyebrow}</span> : null}
@@ -97,11 +98,13 @@ export function InnerHero({ actions, className, eyebrow, title, description, ima
   );
 }
 
+
+
 function InnerScrollCue() {
   return (
     <div className="inner-scroll-cue" aria-hidden="true">
-      {/* <span>Scroll down</span> */}
-      {/* <img src={asset("rumax-scroll-arrow.svg")} alt="" /> */}
+      <span>Scroll down</span>
+      <img src={asset("rumax-scroll-arrow.svg")} alt="" />
     </div>
   );
 }
@@ -124,74 +127,100 @@ export function SplitSection({ eyebrow, title, body, image, imageAlt, reverse }:
     </section>
   );
 }
-export function SplitSectionReverse({ eyebrow, title, body, image, imageAlt, reverse }: SplitSectionProps) {
+
+export function InfoGrid({ eyebrow, title, intro, items, columns = "three" }: InfoGridProps) {
   return (
-    <section className={`page-section split-section${reverse ? " split-section--reverse" : ""}`}>
-      <div className="container split-section__inner">
-        
-        <div className="split-section__copy">
+    <section className="page-section">
+      <div className="container">
+        <div className="page-section__heading">
           {eyebrow ? <span className="page-eyebrow">{eyebrow}</span> : null}
           <h2>{title}</h2>
-          {body.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+          {intro ? <p>{intro}</p> : null}
         </div>
-        <div className="split-section__media">
-          <img src={asset(image)} alt={imageAlt} />
+        <div className={`info-grid info-grid--${columns}`}>
+          {items.map((item, index) => (
+            <article className="info-card" key={item.title}>
+              <span className={`info-card__icon info-card__icon--${item.iconTone ?? "navy"}`}>
+                {item.iconAsset ? <img src={asset(item.iconAsset)} alt="" /> : item.icon ? <PageIcon name={item.icon} /> : String(index + 1).padStart(2, "0")}
+              </span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              {item.href ? <a href={item.href}>Learn More</a> : null}
+            </article>
+          ))}
         </div>
       </div>
     </section>
   );
 }
-export function InfoGrid({ eyebrow, title, intro, items, columns = "three" }: InfoGridProps) {
+
+export function FeebackGrid({ eyebrow, title, intro, items, columns = "four" }: InfoGridProps) {
   return (
-    <section className="InfoGrid">
-      <div className="InfoGrid-container">
-
-        <div className="InfoGrid-heading">
-          {eyebrow && (
-            <span className="InfoGrid-eyebrow">{eyebrow}</span>
-          )}
-          <img src="/assets/figma-exported/rumax-team-mark.png" alt="" className="section-mark section-mark--team" aria-hidden="true"></img>
+    <section className="page-section">
+      <div className="container">
+        <div className="page-section__heading">
+          {eyebrow ? <span className="page-eyebrow">{eyebrow}</span> : null}
           <h2>{title}</h2>
-
-          {intro && <p>{intro}</p>}
+          {intro ? <p>{intro}</p> : null}
         </div>
-
-        <div className={`InfoGrid-grid InfoGrid-grid--${columns}`}>
+        <div className={`info-grid info-grid--${columns}`}>
           {items.map((item, index) => (
-            <article className="InfoGrid-card" key={item.title}>
-
-              <span className="InfoGrid-cardIcon">
-                {item.iconAsset ? (
-                  <img src={asset(item.iconAsset)} alt="" />
-                ) : item.icon ? (
-                  <PageIcon name={item.icon} />
-                ) : (
-                  String(index + 1).padStart(2, "0")
-                )}
+            <article className="info-card" key={item.title}>
+              <span className={`info-card__icon info-card__icon--${item.iconTone ?? "navy"}`}>
+                {item.iconAsset ? <img src={asset(item.iconAsset)} alt="" /> : item.icon ? <PageIcon name={item.icon} /> : String(index + 1).padStart(2, "0")}
               </span>
-
-              <h3 className="InfoGrid-cardTitle">
-                {item.title}
-              </h3>
-
-              <p className="InfoGrid-cardDescription">
-                {item.description}
-              </p>
-
-              {item.href && (
-                <a
-                  href={item.href}
-                  className="InfoGrid-cardLink"
-                >
-                  Learn More
-                </a>
-              )}
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              {item.href ? <a href={item.href}>Learn More</a> : null}
             </article>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
 
+export function FeebackGridsecond({ eyebrow, title, intro, items, columns = "three" }: InfoGridProps) {
+  return (
+    <section className="page-section">
+      <div className="container">
+        <div className="page-section__heading">
+          {eyebrow ? <span className="page-eyebrow">{eyebrow}</span> : null}
+          <h2>{title}</h2>
+          {intro ? <p>{intro}</p> : null}
+        </div>
+        <div className={`info-grid info-grid--${columns}`}>
+          {items.map((item, index) => (
+            <article className="info-card" key={item.title}>
+              <span className={`info-card__icon info-card__icon--${item.iconTone ?? "navy"}`}>
+                {item.iconAsset ? <img src={asset(item.iconAsset)} alt="" /> : item.icon ? <PageIcon name={item.icon} /> : String(index + 1).padStart(2, "0")}
+              </span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              {item.contact ? (
+                <div className="info-card__contact">
+                  {Array.isArray(item.contact) ? (
+                    item.contact.map((line) => (
+                      <div key={line}>{line}</div>
+                    ))
+                  ) : item.contactType === "address" ? (
+                    item.contact.split("\n").map((line, index, lines) => (
+                      <>
+                        {line.trim()}
+                        {index < lines.length - 1 && <br />}
+                      </>
+                    ))
+                  ) : item.href ? (
+                    <a href={item.href}>{item.contact}</a>
+                  ) : (
+                    <span>{item.contact}</span>
+                  )}
+                </div>
+              ) : null}
+
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -218,28 +247,57 @@ export function ProcessTimeline({ title, items }: { title: string; items: InfoIt
   );
 }
 
+
 export function JobGrid({ jobs }: { jobs: InfoItem[] }) {
+  const navigate = useNavigate();
+
   return (
     <section className="page-section jobs-section">
       <div className="container">
         <div className="page-section__heading">
           <h2>Jobs At Rumax</h2>
         </div>
+
         <div className="job-card-grid">
           {jobs.map((job) => (
-            <article className="job-card" key={job.title}>
+            <article className="job-card" key={job._id}>
               <div className="job-card__top">
                 <span aria-hidden="true">
-                  {job.iconAsset ? <img src={asset(job.iconAsset)} alt="" /> : <PageIcon name={job.icon ?? "briefcase"} />}
+                  {job.iconAsset ? (
+                    <img src={asset(job.iconAsset)} alt="" />
+                  ) : (
+                    <PageIcon name={job.icon ?? "briefcase"} />
+                  )}
                 </span>
-                <small>3 Days ago</small>
+                <small>{job.daysAgo || '3 Days ago'}</small>
               </div>
+
               <h3>{job.title}</h3>
-              <em className="job-card__meta">Full-time &bull; 3-5 yrs &bull; On-site</em>
+
+              <em className="job-card__meta">
+                {job.contractType || 'Full-time'} &bull; {job.experience || '3-5 yrs'} &bull; {job.isRemote ? 'Remote' : (job.location || 'On-site')}
+              </em>
+
               <p>{job.description}</p>
+
               <div className="job-card__actions">
-                <a href={job.href ?? "/careers/research-nurse"}>View Details</a>
-                <a className="job-card__apply" href="/contact-us">Apply Now</a>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(`/careers/${job._id}`);
+                  }}
+                >
+                  View Details
+                </a>
+
+                <a className="job-card__apply" href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(`/apply/${job._id}`);
+                  }}>
+                  Apply Now
+                </a>
               </div>
             </article>
           ))}
@@ -274,21 +332,25 @@ export function StepsSection({ eyebrow, title, intro, items }: StepsProps) {
   );
 }
 
-export function PolicyArticle({ title, description, sections }: PolicyArticleProps) {
+export function PolicyArticle({
+  title,
+  description,
+  sections,
+}: PolicyArticleProps) {
   return (
     <section className="page-section policy-section">
       <article className="container policy-article">
-        <header>
-          <span className="page-eyebrow">Company Policy</span>
-          <h2>{title}</h2>
-          <p>{description}</p>
-        </header>
-        {sections.map((section) => (
-          <section className="policy-block" key={section.title}>
+        {sections.map((section, index) => (
+          <section
+            className={`policy-block${index === 0 ? " policy-block--first" : ""}`}
+            key={section.title}
+          >
             <h3>{section.title}</h3>
+
             {section.body?.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
+
             {section.items ? (
               <ul>
                 {section.items.map((item) => (

@@ -1,32 +1,49 @@
-// components/sections/Hero.tsx
-import React from "react";
-import { Link } from "react-router-dom";
+"use client";
 
-const Hero = () => {
+import { areaPills } from "@/data/site";
+import { AssetImage } from "@/components/ui/AssetImage";
+import { HeroCallbackCard } from "@/components/common/HeroCallbackCard";
+
+export function Hero() {
   return (
     <section className="hero">
-      <div className="container">
-        <div className="hero-content">
-          <h1>Clinical Trial Homecare Service</h1>
-          <h3>
-            Bridging The Gap Between The Trial Participant "Patient"
-            And The Trial Location "Investigator Site". UK Wide Clinical Trial Support.
-          </h3>
+      {/* <div className="scroll-cue" aria-hidden="true">
+        <span>Scroll down</span>
+        <AssetImage name="rumax-scroll-arrow.svg" aria-hidden="true" />
+      </div> */}
+      <div className="container hero__inner">
+        <div className="hero__content">
+          <h1>Expert Care. Delivered at Home.</h1>
           <p>
-            Rumax Limited helps accelerates recruitment, maximises retention and protects study timelines through expert Clinical Trial Home Nursing and Investigator Location "Site" Support. We deliver GCP-Compliant decentralised (DCT), hybrid and on-site clinical research solutions across the United Kingdom.
+            CQC-registered domiciliary care across Essex - personal care, complex care, dementia support and 24-hour homecare.
+            Nationally, we deliver specialist clinical trial home nursing for CROs, sponsors, and NHS research teams.
           </p>
-          <div className="hero-buttons">
-            <Link to="/contact" className="btn primary">
-              Discuss Your Trial Needs
-            </Link>
-            <Link to="/contact" className="btn secondary">
-              Request Capacity Assessment
-            </Link>
-          </div>
+
+          <form className="availability-card" aria-label="Check service availability" onSubmit={(event) => event.preventDefault()}>
+            <h2>CHECK SERVICE AVAILABILITY NEAR YOU</h2>
+            <p>Rumax Limited is expanding. Enter your postcode to see if we&apos;re in your area.</p>
+            <div className="postcode-row">
+              <label className="sr-only" htmlFor="postcode">
+                Postcode
+              </label>
+              <input id="postcode" type="text" placeholder="E.g., SW1A 1AA" />
+              <button type="submit">
+                <AssetImage name="rumax-hero-check.svg" aria-hidden="true" />
+                Check
+              </button>
+            </div>
+            <div className="area-pills" aria-label="Popular service areas">
+              {areaPills.map((area) => (
+                <a href="#" key={area}>
+                  {area}
+                </a>
+              ))}
+            </div>
+          </form>
         </div>
+
+        <HeroCallbackCard />
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

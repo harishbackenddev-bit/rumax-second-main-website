@@ -60,7 +60,7 @@ export default function CookiePolicyPage() {
         className="inner-hero--domiciliary"
         title="GDPR"
         description="How we use cookies and similar technologies on our website"
-        backgroundImage="rumax-office-hero.png"
+        backgroundImage="gdpr.png"
         showScrollCue
       />
       <main className="cookie-policy-page">
@@ -127,11 +127,16 @@ export default function CookiePolicyPage() {
 
               <section className="cookie-contact-block">
                 <h3>RUMAX LIMITED</h3>
+
                 <address className="cookie-contact">
                   <span>Cornwallis House, Unit 2, Howard Chase</span>
                   <span>Basildon, Essex, SS14 3BB</span>
                   <span>United Kingdom</span>
                   <span>Phone: 03330115030</span>
+                  <br />
+                  <hr className="cookie-contact-divider" />
+
+
                   <span>Last Reviewed: 02/03/2023</span>
                   <span>Last Amended: 02/03/2023</span>
                 </address>

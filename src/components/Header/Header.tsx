@@ -1,14 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaLocationDot, FaPhone, FaAngleDown, FaBars } from "react-icons/fa6";
-import { FaTimes, FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
-  const dropdownRef = useRef<HTMLLIElement>(null);
 
   // Handle scroll effect
   useEffect(() => {
@@ -28,22 +25,10 @@ const Header = () => {
     };
   }, [isMobileMenuOpen]);
 
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   // Close mobile menu and dropdown when navigating
   const handleLinkClick = () => {
     setIsMobileMenuOpen(false);
-    setIsDropdownOpen(false);
+    setActiveDropdown(null);
   };
 
   // Helper to check if link is active
@@ -52,159 +37,172 @@ const Header = () => {
   };
 
   // Toggle dropdown
-  const toggleDropdown = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDropdownOpen(!isDropdownOpen);
+  const toggleDropdown = () => {
+    setActiveDropdown(activeDropdown === 'services' ? null : 'services');
   };
 
-  // Social media links
+  // Social media links with proper attributes
   const socialLinks = [
-    { label: "Facebook", icon: FaFacebook, url: "https://facebook.com" },
-    { label: "Instagram", icon: FaInstagram, url: "https://instagram.com" },
-    { label: "LinkedIn", icon: FaLinkedin, url: "https://linkedin.com" },
-    { label: "Twitter", icon: FaTwitter, url: "https://twitter.com" },
+    { label: "Facebook", icon: "rumax-facebook.svg", url: "https://facebook.com" },
+    { label: "Instagram", icon: "rumax-instagram.svg", url: "https://instagram.com" },
+    { label: "LinkedIn", icon: "rumax-linkedin.svg", url: "https://linkedin.com" },
+    { label: "X", icon: "rumax-twitter.svg", url: "https://x.com" },
   ];
 
   // Dropdown items for Services
   const dropdownItems = [
-    {
-      label: "Investigator Trial Location Support Service",
-      path: "/investigator-trial-location-support-service",
-    },
-    {
-      label: "Clinical Trials Homecare Services",
-      path: "/clinical-trials-homecare-services",
-    }
+    { label: "Domiciliary Care/Personal Care Service", path: "/domiciliary-and-personal-care" },
+    { label: "Supported Living Service", path: "/supported-living" },
+    { label: "Training Service", path: "/training-service" },
   ];
+
   return (
-    <>
-      {/* TOP BAR */}
-      <div className="top-bar">
-        <div className="container">
-          <div className="top-left">
-            <span>
-              <FaLocationDot className="icon" />
-              Basildon, Essex.
-            </span>
-            <span>
-              <FaPhone className="icon" />
-              +44 3330115030 | +44 1268 293666
-            </span>
+    <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
+      {/* Top Bar */}
+      <div className="topbar">
+        <div className="container topbar__inner">
+          <div className="topbar__left">
+            <img 
+              src="/assets/figma-exported/rumax-location.svg" 
+              alt="" 
+              className="topbar-icon" 
+              aria-hidden="true" 
+            />
+            <span>Basildon, Essex</span>
+            <span className="divider"></span>
+            <img 
+              src="/assets/figma-exported/rumax-phone.svg" 
+              alt="" 
+              className="topbar-icon" 
+              aria-hidden="true" 
+            />
+            <span>+44 3330115030 | +44 1268 293666</span>
           </div>
-          <div className="top-right">
+          <nav className="socials" aria-label="Social media">
             {socialLinks.map((social) => (
-              <a
+              <a 
                 key={social.label}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={social.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
                 aria-label={social.label}
               >
-                <social.icon className="social-icon" />
+                <img src={`/assets/figma-exported/${social.icon}`} alt="" />
               </a>
             ))}
-          </div>
+          </nav>
         </div>
       </div>
 
-      {/* HEADER */}
-      <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="container header-flex">
-          {/* Logo */}
-          <div className="left-logo">
-            <Link to="/" className="logo" aria-label="Rumax home">
-              <img src="/images/logo.png" alt="Rumax" />
-            </Link>
-          </div>
-
-          {/* Navigation */}
-          <nav id="menu" className={isMobileMenuOpen ? 'active' : ''}>
-            <ul>
-              <li>
-                <Link
-                  to="/"
-                  className={isActiveLink('/') ? 'active' : ''}
-                  onClick={handleLinkClick}
-                >
-                  Home
-                </Link>
-              </li>
-
-              <li
-                ref={dropdownRef}
-                className={`dropdown li-list ${isDropdownOpen ? 'active' : ''}`}
-              >
-                <a
-                  href="#"
-                  onClick={toggleDropdown}
-                  className="dropdown-toggle"
-                >
-                  Services
-                  <FaAngleDown className={`dropdown-arrow ${isDropdownOpen ? 'rotated' : ''}`} />
-                </a>
-                <ul className={`submenu ${isDropdownOpen ? 'open' : ''}`}>
-                  {dropdownItems.map((item) => (
-                    <li key={item.path}>
-                      <Link to={item.path} onClick={handleLinkClick}>
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-
-              <li>
-                <Link
-                  to="/partners"
-                  className={isActiveLink('/partners') ? 'active' : ''}
-                  onClick={handleLinkClick}
-                >
-                  Who We Partner With
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  to="/careers"
-                  className={isActiveLink('/careers') ? 'active' : ''}
-                  onClick={handleLinkClick}
-                >
-                  Careers
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  to="/contact-us"
-                  className={isActiveLink('/contact-us') ? 'active' : ''}
-                  onClick={handleLinkClick}
-                >
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </nav>
-
-          {/* Trial Button */}
-          <div className="btns-nav">
-           <Link to="https://rumax-first-website.vercel.app/" className="trial-btn switch-main">
-            Switch to our care support services
+      {/* Navbar */}
+      <div className="navbar">
+        <div className="container navbar__inner">
+          <Link className="brand" to="/" aria-label="Rumax home">
+            <img src="/assets/figma-exported/rumax-logo-header.png" alt="Rumax" />
           </Link>
-          {/* <Link to="/contact-us" className="trial-btn">
-            Start Your Trials
-          </Link> */}
-          </div>
-          {/* Mobile Toggle */}
-          <div
-            className="mobile-toggle"
+
+          <button 
+            className={`menu-toggle ${isMobileMenuOpen ? 'active' : ''}`} 
+            type="button" 
+            aria-expanded={isMobileMenuOpen} 
+            aria-controls="primary-nav"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
-          </div>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span className="sr-only">Open navigation</span>
+          </button>
+
+          <nav className={`primary-nav ${isMobileMenuOpen ? 'is-open' : ''}`} id="primary-nav" aria-label="Main navigation">
+            <Link 
+              to="/" 
+              className={isActiveLink('/') ? 'active' : ''}
+              onClick={handleLinkClick}
+            >
+              Home
+            </Link>
+            
+            {/* Services with Dropdown */}
+            <div className="nav-dropdown">
+              <button 
+                className="nav-dropdown__trigger nav-with-icon" 
+                type="button" 
+                aria-expanded={activeDropdown === 'services'} 
+                aria-controls="services-menu"
+                onClick={toggleDropdown}
+              >
+                Services
+                <img 
+                  src="/assets/figma-exported/rumax-nav-arrow.svg" 
+                  alt="" 
+                  aria-hidden="true"
+                  style={{ 
+                    transform: activeDropdown === 'services' ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s ease'
+                  }}
+                />
+              </button>
+              <div 
+                className={`nav-dropdown__menu ${activeDropdown === 'services' ? 'open' : ''}`} 
+                id="services-menu" 
+                role="menu"
+                style={{
+                  display: activeDropdown === 'services' ? 'block' : 'none'
+                }}
+              >
+                {dropdownItems.map((item) => (
+                  <Link 
+                    key={item.path}
+                    to={item.path} 
+                    role="menuitem" 
+                    onClick={handleLinkClick}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link 
+              to="/pricing-and-funding" 
+              className={isActiveLink('/pricing-and-funding') ? 'active' : ''}
+              onClick={handleLinkClick}
+            >
+              Funding &amp; Cost
+            </Link>
+
+            <Link 
+              to="/about-us" 
+              className={isActiveLink('/about-us') ? 'active' : ''}
+              onClick={handleLinkClick}
+            >
+              About Us
+            </Link>
+
+            <Link 
+              to="/careers" 
+              className={isActiveLink('/careers') ? 'active' : ''}
+              onClick={handleLinkClick}
+            >
+              Careers
+            </Link>
+
+            <Link 
+              to="/contact-us" 
+              className={isActiveLink('/contact-us') ? 'active' : ''}
+              onClick={handleLinkClick}
+            >
+              Contact Us
+            </Link>
+          </nav>
+
+          <Link className="login-btn" to="/contact-us" onClick={handleLinkClick}>
+            Login
+          </Link>
         </div>
-      </header>
-    </>
+      </div>
+    </header>
   );
 };
 

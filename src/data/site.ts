@@ -157,8 +157,9 @@ export const videos = [
 ];
 
 export const ctaLinks = [
-  { label: "Contact Our Clinical Trails", href: "/contact-us", icon: "rumax-cta-callback.svg" },
-  { label: "Schedule a Capacity Presntation", href: "/self-assessment", icon: "rumax-cta-assessment.svg" },
+  { label: "Request a Callback", href: "/contact-us", icon: "rumax-cta-callback.svg" },
+  { label: "Start a Self-Assessment", href: "/self-assessment", icon: "rumax-cta-assessment.svg" },
+  { label: "Care Estimator", href: "/care-calculator", icon: "rumax-cta-estimator.svg" },
   { label: "Rumax Careers", href: "/careers", icon: "rumax-cta-careers.svg" }
 ];
 

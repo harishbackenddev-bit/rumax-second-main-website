@@ -1,10 +1,29 @@
+
+
 export type InfoItem = {
   title: string;
-  description: string;
-  href?: string;
   icon?: string;
-  iconAsset?: string;
-  iconTone?: "blue" | "green" | "orange" | "purple" | "navy";
+ iconAsset?: string | null;
+  iconTone?: string;
+  description?: string;
+  contact?: string | string[];
+  href?: string;
+  contactType?: "address";
+  // Job specific fields
+  _id?: string;
+  location?: string;
+  salary?: string;
+  contractType?: string;
+  experience?: string;
+  availability?: string;
+  isRemote?: boolean;
+  postedDate?: string;
+  daysAgo?: string;
+  department?: string;
+  jobType?: string;
+  featured?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
 };
 
 export type PolicySection = {
@@ -39,6 +58,103 @@ export const aboutValues: InfoItem[] = [
       "In both homecare and clinical research, being there when we say we will be is the foundation of trust. Families depend on us. Sponsors depend on us. We do not take that lightly."
   }
 ];
+
+export const locationValues: InfoItem[] = [
+  {
+    title: "Vital Alternative",
+    icon: "shield",
+    iconAsset: "feedback3.svg",
+    iconTone: "blue",
+    description:
+      "Despite being a highly desirable area, there is a recognized shortage of local nursing beds. Our in-home care model provides a vital alternative, bringing the nursing support directly to you."
+  },
+  {
+    title: "Trained Professionals",
+    icon: "award",
+    iconAsset: "referral3.svg",
+    iconTone: "green",
+    description:
+      "We navigate local staffing challenges by directly employing highly trained, well-supported care professionals, ensuring you receive consistent and reliable service."
+  },
+  {
+    title: "Flexible Care Plans",
+    icon: "shield",
+    iconAsset: "referral3.svg",
+    iconTone: "orange",
+    description:
+      "We offer flexible, comprehensive care plans that adapt to your family's evolving needs over time."
+  }
+];
+
+export const feedbackValues: InfoItem[] = [
+  {
+    title: "Healthcare Professionals",
+    icon: "shield",
+    iconAsset: "referral1.svg",
+    iconTone: "blue",
+    description:
+      "GPs, community nurses, and clinical specialists seeking reliable care for their patients"
+  },
+  {
+    title: "Hospital Discharge Teams",
+    icon: "shield",
+    iconAsset: "referral2.svg",
+    iconTone: "blue",
+    description: "Facilitating safe, timely, and efficient hospital-to-home or facility transitions"
+  },
+  {
+    title: "Social Workers",
+    icon: "shield",
+    iconAsset: "referral3.svg",
+    iconTone: "blue",
+    description: "Sourcing appropriate support for vulnerable individuals in the community"
+  },
+  {
+    title: "Commissioners & Local Authorities",
+    icon: "shield",
+    iconAsset: "feedback4.svg",
+    iconTone: "blue",
+    description: "Securing cost-effective, high-standard care packages for local residents"
+  },
+];
+
+export const feedbackValuessecond: InfoItem[] = [
+  {
+    title: "By Phone",
+    icon: "shield",
+    iconAsset: "feedback1.svg",
+    iconTone: "blue",
+    description:
+      "Call our dedicated support line. Our team is ready to listen and assist you during working hours.",
+    contact: "03330 115030",
+    href: "tel:03330115030",
+  },
+  {
+    title: "By Email",
+    icon: "shield",
+    iconAsset: "feedback2.svg",
+    iconTone: "blue",
+    description:
+      "Send your detailed concerns to our secure inbox. We aim to acknowledge all email correspondence within one business day.",
+    contact: "enquiries@rumax.co.uk",
+    href: "mailto:enquiries@rumax.co.uk",
+  },
+  {
+    title: "In Writing",
+    icon: "shield",
+    iconAsset: "feedback3.svg",
+    iconTone: "blue",
+    description:
+      "Send a formal letter addressed to our management team at:",
+    contact: `Registered Manager
+RUMAX LIMITED
+Cornwall House, Unit 2
+Howard Chase
+Braintree, Essex SS14 3BB`,
+    contactType: "address",
+  },
+];
+
 
 export const aboutRecognition: InfoItem[] = [
   {
@@ -214,42 +330,42 @@ export const careerSupport: InfoItem[] = [
     title: "Daily Living Skills & Routines",
     icon: "home",
     iconAsset: "careers-support-daily-living.svg",
-    iconTone: "navy",
+    iconTone: "purple",
     description: "Support with planning the day, personal routines, managing appointments, and maintaining a comfortable home environment."
   },
   {
     title: "Personal Care (Where Required)",
     icon: "users",
     iconAsset: "careers-support-personal-care.png",
-    iconTone: "navy",
+    iconTone: "purple",
     description: "Respectful support with hygiene, dressing, and wellbeing, always delivered in line with an agreed support plan."
   },
   {
     title: "Medication Support (As Agreed)",
     icon: "document",
     iconAsset: "careers-support-medication.svg",
-    iconTone: "navy",
+    iconTone: "purple",
     description: "Assistance with medication prompts and safe support within the agreed plan and appropriate scope."
   },
   {
     title: "Community Access & Meaningful Activities",
     icon: "users",
     iconAsset: "careers-support-community.png",
-    iconTone: "navy",
+    iconTone: "purple",
     description: "Helping individuals access education, volunteering, hobbies, social activities, and community services."
   },
   {
     title: "Managing Money & Budgeting Support",
     icon: "money",
     iconAsset: "careers-support-budgeting.svg",
-    iconTone: "navy",
+    iconTone: "purple",
     description: "Practical help to build skills around budgeting, bills, and safer financial routines."
   },
   {
     title: "Tenancy Support & Maintaining A Home",
     icon: "home",
     iconAsset: "careers-support-tenancy.svg",
-    iconTone: "navy",
+    iconTone: "purple",
     description: "Support with tenancy responsibilities, reporting repairs, and developing independent living habits."
   }
 ];
@@ -315,94 +431,120 @@ export const privacySections: PolicySection[] = [
   {
     title: "Who We Are",
     body: [
-      "We are RUMAX LIMITED, a company incorporated in England and Wales. Our registered address is Cornwallis House, Unit 2, Howard Chase, Basildon, Essex, SS14 3BB.",
-      "We comply with UK GDPR and all applicable data protection legislation. We are the data controller for information you pass to us through this website and our services."
+      "We are RUMAX LIMITED, a company incorporated in England and Wales. Our registered address is:",
+      "Cromwell House, Unit 2, Howard Chase",
+      "Bristol, Bristol, BS34 8EB",
+      "United Kingdom",
+      "",
+      "Phone: 0335 2511530",
+      "",
+      "We are committed to ensuring that your privacy is protected. We comply with the UK General Data Protection Regulation (\"UKGDPR\") and all national implementing laws, regulations and secondary legislation as amended or updated from time to time in the UK (\"Data Protection Legislation\"). We are the data controller of data you pass to us pursuant to this policy.",
+      "",
+      "This Privacy Policy sets out how we collect personal information from you and how the personal information you provide will be processed by us. By clicking our website at www.rumax.co.uk, you are accepting and consenting to the practices described in this Privacy Policy. If you do not consent, please do not submit any personal data to us."
     ]
   },
   {
-    title: "Information You Give Us",
-    body: ["You may provide information by completing enquiry forms, requesting marketing information or contacting our team."],
-    items: ["Name and contact details", "Postal address", "Phone number", "Care enquiry information", "Marketing preferences"]
+    title: "Information You Give RUMAX LIMITED",
+    body: [
+      "You may give us information about you by completing enquiry forms on the website or by requesting marketing information. The information you give us may include:"
+    ],
+    items: [
+      "Your name",
+      "Email address",
+      "Address/Postcode",
+      "Phone number"
+    ],
   },
   {
-    title: "Information We Collect",
-    body: ["We may collect technical and usage information when you visit the website."],
+    title: "Information RUMAX LIMITED Collects About You",
+    body: [
+      "We may collect the following information when you visit the website:"
+    ],
     items: [
-      "IP address, browser type, device and operating system",
-      "Pages visited, time spent on pages and interaction information",
-      "Website errors, performance information and referral data"
+      "Technical information: IP address, login information, browser type and version, time zone setting, browser plug-in types and versions, operating system and platform",
+      "Website information: Full URL, clickstream data, products viewed or searched for, page impression times, website errors, length of visit, page interaction information, and methods used to browse away from the page"
     ]
   },
   {
-    title: "How We Use Information",
+    title: "Information We Receive From Other Sources",
+    body: [
+      "This includes information we receive about you when you use other websites operated by us or other services we provide. This information may include your name, email address, postal address and phone number."
+    ]
+  },
+  {
+    title: "Cookies",
+    body: [
+      "The website uses cookies to distinguish you from other users of the website. For detailed information on the cookies we use and the purposes for which we use them, please see our Cookie Policy."
+    ]
+  },
+  {
+    title: "Use Made Of The Information",
+    body: [
+      "We may use the information we receive and/or collect about you to:"
+    ],
     items: [
-      "Fulfil our obligations under a contract with you or a service user you represent",
-      "Respond to enquiries and provide requested information",
-      "Improve website performance and service quality",
-      "Maintain records required for governance, safeguarding and compliance"
+      "Fulfil our obligations under any contract with you or a service user you represent",
+      "Send you newsletters and marketing information if you have consented",
+      "Notify you of products and services that may interest you",
+      "Identify website usage and provide statistics for improving our services"
     ]
   },
   {
     title: "Legitimate Business Purposes",
-    body: ["RUMAX LIMITED processes personal information for certain legitimate business purposes."],
-    items: [
-      "Enhancing, modifying, personalising or improving our services and communications",
-      "Administering the website and carrying out data analysis",
-      "Troubleshooting, testing and maintaining service quality"
-    ]
-  },
-  {
-    title: "How Safe is Your Information?",
     body: [
-      "Protecting your security and privacy is important to us. We make every effort to secure information and maintain confidentiality in accordance with data protection legislation.",
-      "The website is protected by security technology designed to reduce unauthorised access, processing, accidental loss, destruction and damage."
+      "RUMAX LIMITED processes personal information for certain legitimate business purposes, which include:"
+    ],
+    items: [
+      "Ensuring, modifying, personalising or improving our services and communications",
+      "Identifying and preventing fraud",
+      "Ensuring the security of our networks and information systems",
+      "Understanding how people interact with our websites",
+      "Advertising the website and carrying out data analysis, troubleshooting and testing",
+      "Determining the effectiveness of promotional campaigns and advertising"
     ]
   },
   {
-    title: "Your Rights",
-    body: ["You have rights in relation to the personal data we hold about you."],
-    items: ["Right to access", "Right to rectification", "Right to object", "Right to data portability", "Right to erasure"]
+    title: "How Safe Is Your Information?",
+    body: [
+      "Protecting your security and privacy is important to us and we take every effort to secure your information and maintain your confidentiality in accordance with Data Protection Legislation.",
+      "The website is protected by various levels of security technology, which are designed to protect your information from any unauthorised or unlawful access, processing, accidental loss, destruction and damage.",
+      "Where we have given you (or where you have chosen) a password which enables you to access certain parts of the website, you are responsible for keeping this password confidential. We ask you not to share a password with anyone."
+    ]
+  },
+  {
+    title: "Your Rights In Respect Of Your Data",
+    body: [
+      "You have the following rights in relation to the personal data we hold about you:"
+    ],
+    items: [
+      "Right to Access: You have the right to access or rectify the information we hold about you. We will process your request within one month of receipt.",
+      "Right to Object: You have the right to withdraw your consent to the processing of your personal data at any time.",
+      "Right to Data Portability: You can request that your information be transmitted directly to another data controller.",
+      "Right to Erasure: You can request that your information is deleted or restricted to the processing of your information."
+    ]
   },
   {
     title: "Marketing Preferences",
     body: [
-      "If you wish to have your information removed from our database or do not want us to contact you for marketing purposes, use the unsubscribe option in any email or contact us directly."
+      "If you wish to have your information removed from our database or if you do not want us to contact you for marketing purposes, please click the \"Unsubscribe\" option in any email we send to you or contact us directly.",
+      "",
+      "We will not share, sell or distribute any of the information you provide to us (other than as set out in this policy) without your prior consent, unless required to do so by law."
     ]
   },
   {
     title: "Third Party Sites",
     body: [
-      "Our website may contain links to third-party websites. These links are provided for convenience only and we do not control those websites or their privacy practices."
-    ]
-  },
-  {
-    title: "Disclosure of Your Information",
-    body: [
-      "We may share information with trusted service providers, professional advisers, regulators, safeguarding bodies or public authorities where required by law or necessary to deliver services."
-    ]
-  },
-  {
-    title: "Retention of Information",
-    body: [
-      "We retain personal information only for as long as needed for the purpose it was collected, to provide services, respond to enquiries, meet legal obligations and maintain governance records."
-    ]
-  },
-  {
-    title: "Passwords and Access",
-    body: [
-      "Where you have chosen a password or been given one to access parts of the website, you are responsible for keeping that password confidential."
-    ]
-  },
-  {
-    title: "Changes to This Policy",
-    body: [
-      "We may update this policy from time to time. Any updates will be published on this website and, where appropriate, notified through other channels."
+      "Our website may contain links to third party websites, including websites we think you are able to purchase products and services. They are provided for your convenience only and we do not check, endorse, approve or agree with such third-party websites nor the products and/or services offered and sold on them.",
+      "",
+      "We have no responsibility for the content, product and/or services of the linked websites. Please ensure that you review all terms and conditions of website use and the Privacy Policy of any such third-party websites before use and before you submit any personal data to those websites."
     ]
   },
   {
     title: "Complaints & Supervisory Authority",
     body: [
-      "If you have concerns about our use of your personal data, please contact us. You also have the right to complain to the Information Commissioner's Office."
+      "If you have any complaints about our use of your personal data, please contact us. You can also have the right to complain to the relevant supervisory authority in your jurisdiction.",
+      "",
+      "In the UK, the supervisory authority is the Information Commissioner's Office (ICO)."
     ]
   }
 ];
