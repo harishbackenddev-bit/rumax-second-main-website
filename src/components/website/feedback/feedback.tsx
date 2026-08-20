@@ -1001,7 +1001,7 @@ export default function FeedbackSection() {
             </div>
             <div className="feedback-section__field">
               <label className="feedback-section__label feedback-section__label--icon" htmlFor="fb-attachment">
-                <PaperclipIcon className="feedback-section__label-icon" />
+               
                 Add Attachment
               </label>
               <div

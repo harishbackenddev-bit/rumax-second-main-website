@@ -113,19 +113,21 @@ const ReferralPage: React.FC = () => {
         <FeebackGrid title="Who Can Make a Referral?" items={feedbackValues} />
 
         <section className="cookie-types-band">
-          <div className="cookie-types-band__inner">
-            <h2>Our Commitment to You and <br />Your Clients</h2>
-            <div className="cookie-type-grid">
-              {cookieTypes.map(([title, body], index) => (
-                <article className="cookie-type-card" key={title}>
-                  <span className={`cookie-type-card__icon cookie-type-card__icon---${index + 1}`} aria-hidden="true" />
-                  <span className="cookie-type-card__number">{String(index + 1).padStart(2, "0")}</span>
-                  <div>
-                    <h3>{title}</h3>
-                    <p>{body}</p>
-                  </div>
-                </article>
-              ))}
+          <div className="container">
+            <div className="cookie-types-band__inner">
+              <h2>Our Commitment to You and <br />Your Clients</h2>
+              <div className="cookie-type-grid">
+                {cookieTypes.map(([title, body], index) => (
+                  <article className="cookie-type-card" key={title}>
+                    <span className={`cookie-type-card__icon cookie-type-card__icon---${index + 1}`} aria-hidden="true" />
+                    {/* <span className="cookie-type-card__number">{String(index + 1).padStart(2, "0")}</span> */}
+                    <div>
+                      <h3>{title}</h3>
+                      <p>{body}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </section>

@@ -3337,7 +3337,7 @@ background-color: #F7F8F9;
 
 .cookie-types-band__inner,
 .cookie-table-section__inner {
-  width: min(1533px, 100vw);
+  /* width: min(1533px, 100vw); */
   margin: 0 auto;
 }
 
