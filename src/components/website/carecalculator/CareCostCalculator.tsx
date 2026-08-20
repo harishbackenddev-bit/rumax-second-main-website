@@ -245,10 +245,9 @@ const CareCostCalculator: React.FC = () => {
     <section className="care-calc" ref={sectionRef}>
       {/* Header */}
       <div className="care-calc__header">
-        <svg className="care-calc__scribble" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 16c3-2 5-6 5-10M9 6c2 3 5 8 5 12M14 18c2-1 4-4 5-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-        <h1 className="care-calc__title">Understand Your Care Options In Under 60 Seconds</h1>
+        <h2 className="care-calc__title">
+          <img src="/assets/figma-exported/rumax-services-mark.svg" alt="" className="section-mark section-mark--services" aria-hidden="true"></img>
+          Understand Your Care Options In Under 60 Seconds</h2>
         <p className="care-calc__subtitle">
           We know navigating home care can feel overwhelming. Use our interactive calculator below to share a little about
           your loved one's current situation. Adjust the sliders to get a transparent, instant estimate of weekly care costs.
