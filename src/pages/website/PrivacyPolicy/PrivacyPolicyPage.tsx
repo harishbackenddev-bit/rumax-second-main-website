@@ -66,7 +66,7 @@ const GDPRPage: React.FC = () => {
       </div>
 
       {/* Main content */}
-      <div className="gdpr-page__content">
+      <div className="gdpr-page__content container">
         <div className="gdpr-page__box">
           <h2 className="gdpr-page__h2">Who We Are</h2>
           <p className="gdpr-page__p">
@@ -229,14 +229,14 @@ const GDPRPage: React.FC = () => {
         </div>
 
 
-        <div className="gdpr-page__marketing">
+        <div className="gdpr-page__marketing container">
           <h3>Marketing Preferences</h3>
           <p className="gdpr-page__p">
             If you wish to have your information removed from our database or if you do not want us to contact
             you for marketing purposes, please click the "Unsubscribe" option in any email we send to you or
             contact us directly.
           </p>
-          <p className="gdpr-page__p">
+          <p className="gdpr-page__p container">
             We will not share, sell or distribute any of the information you provide to us (other than as set
             out in this policy) without your prior consent, unless required to do so by law.
           </p>
@@ -245,7 +245,7 @@ const GDPRPage: React.FC = () => {
       </section>
 
       {/* Third Party Sites */}
-      <section className="gdpr-page__section">
+      <section className="gdpr-page__section container">
         <h3 className="gdpr-page__h3" style={{ marginTop: 0 }}>Third Party Sites</h3>
         <p className="gdpr-page__p">
           Our website may contain links to third party websites, including websites via which you are able to

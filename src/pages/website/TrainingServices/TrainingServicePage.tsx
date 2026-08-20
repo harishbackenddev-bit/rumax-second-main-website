@@ -210,7 +210,11 @@ export default function TrainingServicePage() {
         showScrollCue
       />
       <QualityGovernanceStrip />
-      <ReasonsGrid title="Key Features of Our Service" items={trainingFeatures} />
+
+      <div className="key-main-cst">
+        <ReasonsGrid title="Key Features of Our Service" items={trainingFeatures} />
+      </div>
+
       <TrainingPortfolio />
       <ReasonsGrid title="Why Choose Rumax for Personal Care" items={trainingReasons} />
       <TrainingBookingForm active={currentStep} />
@@ -539,7 +543,7 @@ function TrainingBookingForm({ active }: { active: (typeof trainingSteps)[number
           </div>
         )}
 
-        <form className="training-booking__form" onSubmit={handleSubmit} noValidate>
+        <form className="training-booking__main__form" onSubmit={handleSubmit} noValidate>
           <div className="training-booking__stepper" aria-label="Training booking progress">
             {trainingSteps.map((step) => (
               <a 
@@ -553,6 +557,8 @@ function TrainingBookingForm({ active }: { active: (typeof trainingSteps)[number
               </a>
             ))}
           </div>
+
+         <div className="training-booking__form">
           <div className="training-booking__copy">
             <small>Step {active.id} of {trainingSteps.length}</small>
             <h3>{active.title}</h3>
@@ -612,6 +618,7 @@ function TrainingBookingForm({ active }: { active: (typeof trainingSteps)[number
               );
             })}
           </div>
+
           <div className="training-booking__actions">
             <a 
               href={`/training-service?step=${previous.id}#book-training`}
@@ -636,6 +643,7 @@ function TrainingBookingForm({ active }: { active: (typeof trainingSteps)[number
                 isLastStep ? "Submit Application" : 
                 isFirstStep ? "Next Step" : "Save & Continue"}
             </button>
+          </div>
           </div>
         </form>
       </div>

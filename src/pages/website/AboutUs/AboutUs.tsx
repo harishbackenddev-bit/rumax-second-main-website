@@ -32,10 +32,11 @@ const AboutPage: React.FC = () => {
 
         <Compliance />
 
-        <InfoGrid title="Our Values" items={aboutValues} />
+        <div className="about_page_infogrid-main">
+          <InfoGrid title="Our Values" items={aboutValues} />
+        </div>
 
         <TeamVideos />
-
 
         <CareProcessSection
           title="Our Care & Nursing Team"

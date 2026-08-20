@@ -99,7 +99,7 @@ const PricingAndFundingPage: React.FC = () => {
       />
 
       <section className="cookie-types-band">
-        <div className="cookie-types-band__inner">
+        <div className="cookie-types-band__inner container">
           <h2>
             Our Commitment to You and <br />
             Your Clients

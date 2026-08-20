@@ -143,8 +143,10 @@ export function InfoGrid({ eyebrow, title, intro, items, columns = "three" }: In
               <span className={`info-card__icon info-card__icon--${item.iconTone ?? "navy"}`}>
                 {item.iconAsset ? <img src={asset(item.iconAsset)} alt="" /> : item.icon ? <PageIcon name={item.icon} /> : String(index + 1).padStart(2, "0")}
               </span>
+              <div className="bottom-area">
               <h3>{item.title}</h3>
               <p>{item.description}</p>
+              </div>
               {item.href ? <a href={item.href}>Learn More</a> : null}
             </article>
           ))}

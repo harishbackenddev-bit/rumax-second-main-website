@@ -103,10 +103,12 @@ const LocationDetails: React.FC = () => {
           body={splitBody}
         />
 
+<div className="lain-main">
         <InfoGrid
           title={`Supporting the ${locationName} Community`}
           items={locationValues}
         />
+        </div>
         <Reviews />
 
         <GridSection

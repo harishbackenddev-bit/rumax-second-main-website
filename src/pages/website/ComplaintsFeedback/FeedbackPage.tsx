@@ -28,11 +28,13 @@ const FeedbackPage: React.FC = () => {
         />
         
 
-        
-        <FeebackGrid title="Our Promise to You" items={feedbackValues} />
+        <div className="feedback-main-cst">
+          <FeebackGrid title="Our Promise to You" items={feedbackValues} />
+        </div>
 
-
+         <div className="feedback-main-cst">
          <FeebackGridsecond title="How to Raise a Concern or Complaint" items={feedbackValuessecond} />
+         </div>
           <FeedbackSection />
         
         <CareCta />

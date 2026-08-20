@@ -119,7 +119,11 @@ export default function SupportedLivingPage() {
         imageAlt="Rumax supported living care worker with client"
         variant="about"
       />
-      <ReasonsGrid title="Key Features of Our Service" items={supportedLivingFeatures} />
+
+     <div className="key-main-cst">
+        <ReasonsGrid title="Key Features of Our Service" items={supportedLivingFeatures} />
+     </div>
+
       <ReasonsGrid title="Why Choose Rumax for Personal Care" items={supportedLivingReasons} />
       <FaqSection items={supportedLivingFaqs} />
       <CareCta title="Enquire About Our Services" />

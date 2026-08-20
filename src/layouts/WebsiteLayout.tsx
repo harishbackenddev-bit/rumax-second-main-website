@@ -5,7 +5,7 @@ import MainFooter from "@/components/Footer/MainFooter";
 const WebsiteLayout = () => {
   return (
     <>
-      <div className="bg-white dark:bg-gray-900">
+      <div className="bg-white">
         <Header />
         <main className="flex-1 pt-0">
           <Outlet />

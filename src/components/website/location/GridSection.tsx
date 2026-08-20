@@ -57,14 +57,16 @@ const GridSection: React.FC<GridSectionProps> = ({
             </article>
           ))}
 
-          {buttonText && (
+         
+        </div>
+
+         {buttonText && (
             <div className="grid-service__button">
-              <a href={buttonLink}>
+              <a href={buttonLink} className="primary-btn">
                 {buttonText}
               </a>
             </div>
           )}
-        </div>
       </div>
     </section>
   );
