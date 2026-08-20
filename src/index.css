@@ -2414,6 +2414,15 @@ img.dom-care-cqc__external {
 .page-section:nth-of-type(odd):not(.split-section):not(.policy-section):not(.contact-section) {
   background: #F7F8F9;
 }
+section.page-section.rfrallsec span.info-card__icon.info-card__icon--blue {
+    position: relative;
+    top: 0px;
+}
+
+.about-page section.page-section.rfrallsec .info-card {
+    padding: 20px !important;
+    
+}
 section#book-referral {
     background: transparent;
 }

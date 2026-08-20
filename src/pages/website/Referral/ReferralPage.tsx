@@ -110,9 +110,61 @@ const ReferralPage: React.FC = () => {
           ]}
         />
 
-        <FeebackGrid title="Who Can Make a Referral?" items={feedbackValues} />
+        <section className="page-section rfrallsec">
+  <div className="container">
+    <div className="page-section__heading">
+      <h2>Who Can Make a Referral?</h2>
+    </div>
 
-        <section className="cookie-types-band">
+    <div className="info-grid info-grid--four">
+      <article className="info-card">
+        <span className="info-card__icon info-card__icon--blue">
+          <img src="/assets/figma-exported/referral1.svg" alt="" />
+        </span>
+        <h3>Healthcare Professionals</h3>
+        <p>
+          GPs, community nurses, and clinical specialists seeking reliable care
+          for their patients
+        </p>
+      </article>
+
+      <article className="info-card">
+        <span className="info-card__icon info-card__icon--blue">
+          <img src="/assets/figma-exported/referral2.svg" alt="" />
+        </span>
+        <h3>Hospital Discharge Teams</h3>
+        <p>
+          Facilitating safe, timely, and efficient hospital-to-home or facility
+          transitions
+        </p>
+      </article>
+
+      <article className="info-card">
+        <span className="info-card__icon info-card__icon--blue">
+          <img src="/assets/figma-exported/referral3.svg" alt="" />
+        </span>
+        <h3>Social Workers</h3>
+        <p>
+          Sourcing appropriate support for vulnerable individuals in the
+          community
+        </p>
+      </article>
+
+      <article className="info-card">
+        <span className="info-card__icon info-card__icon--blue">
+          <img src="/assets/figma-exported/feedback4.svg" alt="" />
+        </span>
+        <h3>Commissioners &amp; Local Authorities</h3>
+        <p>
+          Securing cost-effective, high-standard care packages for local
+          residents
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+        <section className="cookie-types-band ">
           <div className="container">
             <div className="cookie-types-band__inner">
               <h2>Our Commitment to You and <br />Your Clients</h2>
