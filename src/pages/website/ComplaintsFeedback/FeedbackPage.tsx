@@ -29,14 +29,62 @@ const FeedbackPage: React.FC = () => {
         
 
         <div className="feedback-main-cst">
-          <FeebackGrid title="Our Promise to You" items={feedbackValues} />
+          <section className="page-section">
+  <div className="container">
+    <div className="page-section__heading">
+      <h2>Our Promise to You</h2>
+    </div>
+
+    <div className="info-grid info-grid--four">
+      <article className="info-card">
+        <span className="info-card__icon info-card__icon--blue">
+          <img src="/assets/figma-exported/feedback1.svg" alt="" />
+        </span>
+        <h3>We Will Listen</h3>
+        <p>
+          Your feedback will be treated with the utmost respect, confidentiality, and empathy
+        </p>
+      </article>
+
+      <article className="info-card">
+        <span className="info-card__icon info-card__icon--blue">
+          <img src="/assets/figma-exported/feedback2.svg" alt="" />
+        </span>
+        <h3>We Will Act Promptly</h3>
+        <p>
+          We acknowledge all complaints swiftly and aim to resolve them as quickly as possible
+        </p>
+      </article>
+
+      <article className="info-card">
+        <span className="info-card__icon info-card__icon--blue">
+          <img src="/assets/figma-exported/feedback3.svg" alt="" />
+        </span>
+        <h3>We Will Be Fair</h3>
+        <p>
+         Every concern is thoroughly and objectively investigated by our management team
+        </p>
+      </article>
+
+      <article className="info-card">
+        <span className="info-card__icon info-card__icon--blue">
+          <img src="/assets/figma-exported/feedback4.svg" alt="" />
+        </span>
+        <h3>Care Never Compromised</h3>
+        <p>
+          Raising a concern will never negatively impact the level or quality of care you receive
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
         </div>
 
-         <div className="feedback-main-cst">
+         
+          <FeedbackSection />
+        <div className="feedback-main-cst">
          <FeebackGridsecond title="How to Raise a Concern or Complaint" items={feedbackValuessecond} />
          </div>
-          <FeedbackSection />
-        
         <CareCta />
       </div>
     </PageShell>

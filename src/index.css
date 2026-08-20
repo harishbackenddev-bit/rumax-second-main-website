@@ -2578,7 +2578,16 @@ button {
   color: var(--purple);
   font-weight: 800;
 }
-
+.feedback-main-cst .info-card a {
+  display: inline-flex;
+  margin-top: 22px;
+  color: #1B2280;
+  font-weight: 800;
+}
+.about-page .feedback-main-cst .info-card__contact
+{
+color:#364153;
+}
 .steps-section {
   background: #f8f9fb;
 }
