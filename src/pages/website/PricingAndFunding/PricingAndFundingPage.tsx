@@ -114,9 +114,9 @@ const PricingAndFundingPage: React.FC = () => {
                   aria-hidden="true"
                 />
 
-                <span className="cookie-type-card__number">
+                {/* <span className="cookie-type-card__number">
                   {String(index + 1).padStart(2, "0")}
-                </span>
+                </span> */}
 
                 <div>
                   <h3>{item.title}</h3>
