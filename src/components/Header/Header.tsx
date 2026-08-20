@@ -197,9 +197,14 @@ const Header = () => {
             </Link>
           </nav>
 
-          <Link className="login-btn" to="/contact-us" onClick={handleLinkClick}>
-            Login
-          </Link>
+          <div className="btns">
+            <a className="login-btn swicthbtn" href="https://rumax-dashboard-frontend.vercel.app/">
+              Switch to Clinical Trials
+            </a>  
+            {/* <a className="login-btn" href="/contact-us">
+              Login
+            </a> */}
+          </div>
         </div>
       </div>
     </header>

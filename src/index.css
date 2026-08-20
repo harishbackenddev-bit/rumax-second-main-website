@@ -2418,7 +2418,21 @@ section.page-section.rfrallsec span.info-card__icon.info-card__icon--blue {
     position: relative;
     top: 0px;
 }
+.container.navbar__inner {
+    display: flex;
+    justify-content: space-between;
+}
+.login-btn.swicthbtn:hover {
+  animation: heartbeat 1s ease-in-out infinite;
+}
 
+@keyframes heartbeat {
+  0%   { transform: scale(1); }
+  14%  { transform: scale(1.15); }
+  28%  { transform: scale(1); }
+  42%  { transform: scale(1.15); }
+  70%  { transform: scale(1); }
+}
 .about-page section.page-section.rfrallsec .info-card {
     padding: 20px !important;
     
