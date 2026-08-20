@@ -6005,7 +6005,7 @@ background-color: #F7F8F9;
 }
 
 .footer__cqc {
-  width: 105px;
+  width: 90px;
   height: 33px;
   object-fit: contain;
 }
@@ -8727,7 +8727,7 @@ body {
 }
 
 .footer__cqc {
-  width: clamp(72px, 5.47vw, 105px);
+  width: 90px;
   height: auto;
   aspect-ratio: 105 / 33;
   object-fit: contain;
