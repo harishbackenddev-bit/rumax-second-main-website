@@ -2414,7 +2414,9 @@ img.dom-care-cqc__external {
 .page-section:nth-of-type(odd):not(.split-section):not(.policy-section):not(.contact-section) {
   background: #F7F8F9;
 }
-
+section#book-referral {
+    background: transparent;
+}
 .page-section__heading {
   width: min(920px, 100%);
   margin: 0 auto 44px;
