@@ -22,6 +22,7 @@ const MainFooter: React.FC = () => {
               alt="Care Quality Commission" 
             />
             <span>Overall: Good</span>
+            <a href="https://www.homecare.co.uk/homecare/agency.cfm/id/65432233179" target="_blank"><img src="/assets/figma-exported/dom-care-cqc-external.svg" alt="dom-care-cqc__external" className="dom-care-cqc__external" /></a>
           </div>
         </div>
 

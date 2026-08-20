@@ -39,8 +39,17 @@ const LocationDetails: React.FC = () => {
     location?.description ||
     `Trusted Home Care in ${locationName}, Rated 9.8/10.`;
 
-  const image =
-    location?.image || "rumax-team-hero.png";
+const imageMap: Record<string, string> = {
+  Brentwood: "brentwood.png",
+  Rochford: "rochford.png",
+  Basildon: "basildon.png",
+  Leigh: "leigh.png",
+  Wickford: "wickford.png",
+  Rayleigh: "rayleigh.png",
+};
+
+const image =
+  imageMap[locationName] || location?.image || "leigh.png";
 
   const splitTitle =
     location?.splitTitle ||
