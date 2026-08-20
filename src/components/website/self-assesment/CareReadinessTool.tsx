@@ -372,20 +372,9 @@ const CareReadinessTool: React.FC = () => {
           <div className="logo-row">
             <div className="logo-block">
               <div className="logo-inner">
-                <svg width="30" height="26" viewBox="0 0 30 26" fill="none">
-                  <path d="M2 24C8 18 10 10 6 2C14 6 18 14 15 22C22 20 26 12 24 4C29 10 29 18 22 24"
-                    stroke="url(#rumax-grad)" strokeWidth="2.4" strokeLinecap="round" fill="none"/>
-                  <defs>
-                    <linearGradient id="rumax-grad" x1="2" y1="2" x2="29" y2="24">
-                      <stop offset="0%" stopColor="#7C3AED"/>
-                      <stop offset="50%" stopColor="#4338CA"/>
-                      <stop offset="100%" stopColor="#EC4899"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <span className="logo-text">RUMAX</span>
+                <img src="/assets/figma-exported/rumax-logo-header.png" alt="Rumax" />
               </div>
-              <span className="logo-tag">"Your Care, Our Commitment"</span>
+              
             </div>
           </div>
 

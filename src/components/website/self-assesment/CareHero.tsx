@@ -31,17 +31,9 @@ const CareHero: React.FC<CareHeroProps> = ({ onButtonClick, className = '' }) =>
           <h2 className="care-hero__heading">
             <span className="care-hero__heading-line1">
               Is It Time for Home Care?
-              <svg className="care-hero__scribble" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M4 16c3-2 5-6 5-10M9 6c2 3 5 8 5 12M14 18c2-1 4-4 5-7"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+             
             </span>
-            <span className="care-hero__heading-line2">A Quick Readiness Assessment</span>
+            <span className="care-hero__heading-line2">A Quick Readiness Assessment<img src="/assets/figma-exported/secondimage.png" alt="" className="section-mark section-mark--services" aria-hidden="true" /></span>
           </h2>
 
           <p className="care-hero__text">

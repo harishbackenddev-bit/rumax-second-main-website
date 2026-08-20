@@ -18,7 +18,7 @@ const FeedbackPage: React.FC = () => {
         
         <SplitSection
           title="Your Voice Matters"
-          image="about-story-banner.png"
+          image="complaints.png"
           imageAlt="Rumax care team standing beside Rumax banner"
           reverse
           body={[

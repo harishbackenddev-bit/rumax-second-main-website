@@ -581,12 +581,11 @@ export default function FeedbackSection() {
   return (
     <section className="feedback-section">
       <div className="feedback-section__header">
-        <div className="feedback-section__icon">
-          <SparkleIcon className="feedback-section__icon-svg" />
-        </div>
-        <h1 className="feedback-section__title">
+        
+        <h2 className="feedback-section__title">
+          <img src="/assets/figma-exported/rumax-services-mark.svg" alt="" className="section-mark section-mark--services" aria-hidden="true" />
           Your Feedback Matters: Help Us Improve Our Care
-        </h1>
+        </h2>
         <p className="feedback-section__subtitle">
           Share your concerns or feedback with RUMAX. We listen, support, and resolve directly.
         </p>

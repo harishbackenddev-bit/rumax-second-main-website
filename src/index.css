@@ -10691,7 +10691,7 @@ section.page-section.dom-care-reasons{
 }
 
 .care-readiness-tool {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Manrope';
   color: var(--text);
   background: var(--bg);
   min-height: 100vh;
@@ -11135,7 +11135,7 @@ section.page-section.dom-care-reasons{
   --text-sub: #5c5c66;
 
   position: relative;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Manrope';
   background: var(--lavender-bg);
   border-radius: 14px;
   overflow: hidden;
@@ -11188,17 +11188,17 @@ section.page-section.dom-care-reasons{
 }
 
 .care-hero__heading {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: 'Manrope';
   font-size: 30px;
   line-height: 1.25;
   margin: 0;
 }
 
 .care-hero__heading-line1 {
-  font-family: 'Playfair Display', Georgia, "Times New Roman", serif;
+  font-family: 'Manrope';
   font-weight: 500;
   font-style: normal;
-  font-size: 55px;
+  font-size: 45px;
   line-height: 77.5px;
   letter-spacing: 0%;
   vertical-align: middle;
@@ -11212,14 +11212,15 @@ section.page-section.dom-care-reasons{
   color: var(--purple);
   font-weight: 700;
   margin-top: 2px;
-  font-family: 'Playfair Display', Georgia, "Times New Roman", serif;
+  font-family:'Manrope';
   font-style: normal;
-  font-size: 55px;
+  font-size: 45px;
   line-height: 77.5px;
   letter-spacing: 0%;
   vertical-align: middle;
   display: flex;
-  align-items: center;
+      align-items: flex-start;
+ 
   gap: 8px;
 
 
