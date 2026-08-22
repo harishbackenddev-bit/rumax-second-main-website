@@ -6013,6 +6013,7 @@ background-color: #F7F8F9;
 .footer__cqc-rating a {
     display: flex;
     align-items: center;
+  gap:10px;
 }
 .footer__cqc-rating {
   display: flex;
