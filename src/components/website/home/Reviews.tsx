@@ -34,7 +34,7 @@ export function Reviews() {
 
   return (
     <section className="reviews">
-      <div className="container reviews__inner">
+      <div className="container reviews__inners">
         
         <div className="review-widget-container">
           <div
