@@ -407,7 +407,10 @@ button {
   font-size: 22px;
   line-height: 1.65;
 }
-
+.inner-hero__actions a {
+  
+    padding: 12px 18px !important;
+}
 .availability-card {
   width: min(890px, 100%);
   padding: 34px 29px 34px;
