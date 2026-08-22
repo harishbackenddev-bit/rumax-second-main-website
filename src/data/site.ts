@@ -51,12 +51,12 @@ export const services = [
   },
   {
     number: "03",
-    title: "Investigator Site Support",
-    href: "/contact-us",
+    title: "Training Services",
+    href: "/training-service",
     icon: "rumax-service-investigator.svg",
     largeIcon: true,
-    description: "End-to-end operational and clinical support for sponsors, CROs, and research teams across decentralised trials.",
-    tags: ["Protocol Compliance", "Data Collection", "Patient Safety"]
+    description: "Professional healthcare training programs designed to equip caregivers and healthcare professionals with the skills",
+    tags: ["Certified Training", "Practical Learning", "Industry Compliance"]
   },
   {
     number: "04",
