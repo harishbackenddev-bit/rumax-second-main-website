@@ -81,7 +81,7 @@ export default function LocationsSection() {
             />
 
             <button type="submit">
-              <span><Image 
+              <span><img 
     src={locationIcon} 
     alt="" 
     width={40} 
