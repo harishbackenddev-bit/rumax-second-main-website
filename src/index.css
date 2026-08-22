@@ -100,7 +100,9 @@ button {
   z-index: 10;
   background: var(--white);
 }
-
+section.funding-pathway .option-row.option-row-3 .option-icon svg {
+    display: none;
+}
 .sr-only {
   position: absolute;
   width: 1px;
