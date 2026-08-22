@@ -1418,7 +1418,7 @@ img.dom-care-cqc__external {
 
 .areas-we-serve-section .service-availability h3 {
   margin: 0 0 5px;
-  font-size: 11px;
+  font-size: 16px;
   line-height: 1.3;
   font-weight: 500;
 }
@@ -1426,7 +1426,7 @@ img.dom-care-cqc__external {
 .areas-we-serve-section .service-availability p {
   margin: 0 0 9px;
   color: rgba(255, 255, 255, 0.85);
-  font-size: 8px;
+  font-size: 12px;
   line-height: 1.4;
 }
 
@@ -1437,19 +1437,16 @@ img.dom-care-cqc__external {
 }
 
 .areas-we-serve-section .service-availability__form input {
-  flex: 1;
-  min-width: 0;
-  height: 22px;
-  padding: 0 9px;
-
+  color: #fff;
+  background: #ffffff40;
   border: 0;
   border-radius: 2px;
   outline: none;
-
-  background: rgba(255, 255, 255, 0.25);
-  color: #ffffff;
-
-  font-size: 8px;
+  flex: 1;
+  min-width: 0;
+  height: 22px;
+  padding: 15px 9px;
+  font-size: 12px;
 }
 
 .areas-we-serve-section .service-availability__form input::placeholder {
@@ -1457,26 +1454,22 @@ img.dom-care-cqc__external {
 }
 
 .areas-we-serve-section .service-availability__form button {
-  height: 22px;
-  padding: 0 12px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-
+  color: #682080;
+  cursor: pointer;
+  background: #fff;
   border: 0;
   border-radius: 2px;
-
-  background: #ffffff;
-  color: #682080;
-
-  font-size: 8px;
-  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  padding: 15px 12px;
+  font-size: 16px;
+  display: inline-flex;
 }
 
 .areas-we-serve-section .service-availability__form button span {
-  font-size: 10px;
+  font-size: 16px;
 }
 
 /* src/components/website/funding/FundingPathway.css */
