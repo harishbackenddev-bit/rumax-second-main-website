@@ -356,11 +356,9 @@ const FundingPathway: React.FC<FundingPathwayProps> = ({ className = '' }) => {
         src={item.icon} 
         alt={item.label} 
         className="option-icon-image"
-        style={{
-          width: '24px',
-          height: '24px',
-          objectFit: 'contain',
-          display: 'block'
+        onError={(e) => {
+          // Fallback if image doesn't load
+          (e.target as HTMLImageElement).style.display = 'none';
         }}
       />
       <span>{item.label}</span>
