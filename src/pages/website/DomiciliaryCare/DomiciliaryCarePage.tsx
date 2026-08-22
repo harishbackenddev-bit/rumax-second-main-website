@@ -593,10 +593,12 @@ function DomiciliaryCqcStrip() {
           </div>
         </div>
         <div className="dom-care-cqc__rating">
+          <a href="https://www.cqc.org.uk/location/1-1285309099" target="_blank">
           <AssetImage name="dom-care-cqc-rating-logo.svg" alt="Care Quality Commission" />
           <i aria-hidden="true" />
           <span>Overall: <strong>Good</strong></span>
           <AssetImage className="dom-care-cqc__external" name="dom-care-cqc-external.svg" alt="" aria-hidden="true" />
+          </a>
         </div>
       </div>
     </section>
