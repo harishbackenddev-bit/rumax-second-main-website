@@ -265,7 +265,9 @@ button {
   transform: translate(-50%, 6px);
   transition: opacity 140ms ease, transform 140ms ease;
 }
-
+.container.location-grid a {
+    padding: 15px;
+}
 .nav-dropdown:hover .nav-dropdown__menu,
 .nav-dropdown:focus-within .nav-dropdown__menu,
 .nav-dropdown.is-open .nav-dropdown__menu {
