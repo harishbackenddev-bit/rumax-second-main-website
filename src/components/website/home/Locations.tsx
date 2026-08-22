@@ -32,7 +32,7 @@ export function Locations() {
         })}
       </div>
 
-      <a className="primary-btn locations__button" href="#">
+      <a className="primary-btn locations__button" href="/locations">
         View All Locations
       </a>
     </section>
