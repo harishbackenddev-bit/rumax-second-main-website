@@ -32,7 +32,7 @@ const Step2: React.FC<Step2Props> = ({
   onAvailabilityToggle,
   onRadioChange
 }) => {
-  const locations = ['Basildon', 'Essex', 'London', 'Manchester', 'Birmingham'];
+  //const locations = ['Basildon', 'Essex', 'London', 'Manchester', 'Birmingham'];
   const shifts = ['Morning', 'Afternoon', 'Evening'];
   const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
   const shiftTimes = {
