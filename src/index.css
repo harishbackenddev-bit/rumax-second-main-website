@@ -9830,7 +9830,7 @@ section#book-training {
 }
 
 .dom-care-cqc__provider,
-.dom-care-cqc__rating {
+.dom-care-cqc__rating a{
   display: flex;
   align-items: center;
   gap: clamp(16px, 1.25vw, 24px);
@@ -9872,7 +9872,7 @@ section#book-training {
   line-height: 1.43;
 }
 
-.dom-care-cqc__rating {
+.dom-care-cqc__rating a {
   min-height: clamp(56px, 3.54vw, 68px);
   flex: 0 0 auto;
   gap: clamp(13px, 0.95vw, 18px);
