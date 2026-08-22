@@ -4,25 +4,25 @@ type Location = {
 };
 
 const locations: Location[] = [
-  { name: "Rayleigh" },
-  { name: "Wickford" },
-  { name: "Basildon" },
-  { name: "Brentwood" },
-  { name: "Leigh on Sea" },
-  { name: "Southend" },
-  { name: "Thundersley" },
-  { name: "Benfleet" },
-  { name: "Hadleigh" },
-  { name: "Hullbridge" },
-  { name: "Pitsea" },
-  { name: "Laindon" },
-  { name: "Hockley" },
-  { name: "Billericay" },
-  { name: "Chelmsford" },
-  { name: "Maldon" },
-  { name: "Rawreth" },
-  { name: "Eastwood" },
-  { name: "Southend on Sea" },
+  { name: "Rayleigh",link:"/locations/rayleigh" },
+  { name: "Wickford",link:"/locations/wickford" },
+  { name: "Basildon",link:"/locations/basildon" },
+  { name: "Brentwood",link:"/locations/brentwood" },
+  { name: "Leigh on Sea",link:"/locations/leigh-on-sea" },
+  { name: "Southend",link:"/locations" },
+  { name: "Thundersley",link:"/locations" },
+  { name: "Benfleet",link:"/locations" },
+  { name: "Hadleigh",link:"/locations" },
+  { name: "Hullbridge",link:"/locations" },
+  { name: "Pitsea",link:"/locations" },
+  { name: "Laindon",link:"/locations" },
+  { name: "Hockley",link:"/locations" },
+  { name: "Billericay",link:"/locations" },
+  { name: "Chelmsford",link:"/locations" },
+  { name: "Maldon",link:"/locations" },
+  { name: "Rawreth",link:"/locations" },
+  { name: "Eastwood",link:"/locations" },
+  { name: "Southend on Sea",link:"/locations" },
 ];
 
 export default function LocationsSection() {
@@ -44,7 +44,7 @@ export default function LocationsSection() {
           {locations.map((location) => (
             <a
               key={location.name}
-              href="/locations"
+              href={location.link}
               className="location-card"
             >
               <span className="location-card__icon">
