@@ -44,24 +44,24 @@ const MainFooter: React.FC = () => {
           <nav className="two-col reveal-on-scroll is-visible" style={{ '--reveal-delay': '180ms' } as React.CSSProperties}>
             <h2>Locations</h2>
             <Link className="footer-link--accent" to="/locations/rayleigh">Rayleigh</Link>
-            <Link to="/locations/billericay">Billericay</Link>
+            <Link to="/locations">Billericay</Link>
             <Link className="footer-link--accent" to="/locations/rochford">Rochford</Link>
-            <Link to="/locations/chelmsford">Chelmsford</Link>
+            <Link to="/locations/">Chelmsford</Link>
             <Link className="footer-link--accent" to="/locations/leigh-on-sea">Leigh On Sea</Link>
-            <Link to="/locations/maldon">Maldon</Link>
+            <Link to="/locations/">Maldon</Link>
             <Link className="footer-link--accent" to="/locations/brentwood">Brentwood</Link>
-            <Link to="/locations/rawreth">Rawreth</Link>
+            <Link to="/locations/">Rawreth</Link>
             <Link className="footer-link--accent" to="/locations/basildon">Basildon</Link>
-            <Link to="/locations/eastwood">Eastwood</Link>
+            <Link to="/locations/">Eastwood</Link>
             <Link className="footer-link--accent" to="/locations/wickford">Wickford</Link>
-            <Link to="/locations/southend-on-sea">Southend On Sea</Link>
-            <Link to="/locations/hadleigh">Hadleigh</Link>
+            <Link to="/locations">Southend On Sea</Link>
+            <Link to="/locations">Hadleigh</Link>
             <span aria-hidden="true"></span>
-            <Link to="/locations/hullbridge">Hullbridge</Link>
+            <Link to="/locations">Hullbridge</Link>
             <span aria-hidden="true"></span>
-            <Link to="/locations/pitsea">Pitsea</Link>
+            <Link to="/locations">Pitsea</Link>
             <span aria-hidden="true"></span>
-            <Link to="/locations/laindon">Laindon</Link>
+            <Link to="/locations">Laindon</Link>
             <span aria-hidden="true"></span>
           </nav>
 
