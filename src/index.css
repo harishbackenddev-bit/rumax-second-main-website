@@ -92,7 +92,7 @@ input {
 button {
   appearance: none;
 }
-img.dom-care-cqc__external {
+.footer__cqc-rating img.dom-care-cqc__external {
     filter: brightness(0) invert();
 }
 .site-header {
