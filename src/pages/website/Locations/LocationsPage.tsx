@@ -12,7 +12,7 @@ const LocationsPage: React.FC = () => {
           eyebrow=""
           title="Our Essex County Locations"
           description="Providing exceptional home care across Essex and surrounding areas "
-          backgroundImage="rumax-team-hero.png"
+          backgroundImage="locations.png"
         />
 
         <LocationsSection />
