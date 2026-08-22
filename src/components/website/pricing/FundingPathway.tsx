@@ -2,9 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
-import homeImg from '/images/home.png';
-import familyImg from '/images/family.png';
-import careImg from '/images/care.png';
+
 interface FundingPathwayProps {
   className?: string;
 }
@@ -343,9 +341,9 @@ const FundingPathway: React.FC<FundingPathwayProps> = ({ className = '' }) => {
               </label>
               <div className="option-row option-row-3" data-group="setting">
   {[
-    { value: 'own-home', label: 'Own Home', icon: homeImg },
-    { value: 'with-family', label: 'With Family', icon: familyImg },
-    { value: 'care-facility', label: 'Care Facility', icon: careImg }
+    { value: 'own-home', label: 'Own Home' },
+    { value: 'with-family', label: 'With Family' },
+    { value: 'care-facility', label: 'Care Facility' }
   ].map((item) => (
     <div
       key={item.value}
@@ -354,16 +352,7 @@ const FundingPathway: React.FC<FundingPathwayProps> = ({ className = '' }) => {
       onClick={() => handleOptionSelect('careSetting', item.value)}
       style={{ cursor: isSubmitting ? 'not-allowed' : 'pointer', opacity: isSubmitting ? 0.6 : 1 }}
     >
-      <img 
-        src={item.icon} 
-        alt={item.label} 
-        className="option-icon-image"
-        style={{
-          width: '32px',
-          height: '32px',
-          objectFit: 'contain'
-        }}
-      />
+     
       <span>{item.label}</span>
     </div>
   ))}
