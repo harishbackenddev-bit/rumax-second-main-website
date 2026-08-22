@@ -1,5 +1,5 @@
 import React from "react";
-
+import locationIcon from "@/public/images/icon.png";
 type Location = {
   name: string;
 };
@@ -81,7 +81,12 @@ export default function LocationsSection() {
             />
 
             <button type="submit">
-              <span>⌖</span>
+              <span><Image 
+    src={locationIcon} 
+    alt="" 
+    width={40} 
+    height={40}
+  /></span>
               Check
             </button>
           </form>
