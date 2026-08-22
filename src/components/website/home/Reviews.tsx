@@ -35,12 +35,7 @@ export function Reviews() {
   return (
     <section className="reviews">
       <div className="container reviews__inner">
-        <aside className="review-brand">
-          {/* Optional: Keep your brand info or remove if you want only the widget */}
-          <h2>Client Reviews</h2>
-          <p>See what our clients say about us</p>
-        </aside>
-
+        
         <div className="review-widget-container">
           <div
             className="tg-review-carousel-widget-container"
