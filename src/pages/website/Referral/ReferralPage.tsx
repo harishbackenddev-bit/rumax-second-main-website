@@ -33,7 +33,7 @@ const referralSteps = [
       ["Last Name *", "Enter last name"],
       ["Phone Number *", "Enter Phone Number"],
       ["Email Address *", "Enter email address"],
-      ["Job Title / Role *", "Select"],
+      ["Job Title / Role *", "Enter Job Title"],
       ["Organization / Trust / Local Authority *", "Enter Organization/Trust/Local Authority Name"]
     ]
   },
@@ -44,9 +44,9 @@ const referralSteps = [
     description: "Please provide the client's personal information.",
     fields: [
       ["Client Full Name *", "Enter client full name"],
-      ["Date of Birth *", "Select"],
-      ["Current Location *", "Select"],
-      ["Estimated Discharge Date (if in hospital)", "Select"],
+      ["Date of Birth *", "date"],
+      ["Current Location *", "Enter Current Location"],
+      ["Estimated Discharge Date (if in hospital)", "date"],
       ["Additional information or questions (optional)", "Specify here...", "wide"]
     ]
   },
@@ -56,7 +56,7 @@ const referralSteps = [
     title: "Care Requirements (The Need)",
     description: "Please provide details about the care required.",
     fields: [
-      ["Primary Reason for Referral *", "Select"],
+      ["Primary Reason for Referral *", "Primary Reason for Referral"],
       ["Urgency Level *", "Radio"],
       ["Brief Summary of Needs *", "e.g., Mobility issues, medication administration, behavioral support", "wide"]
     ]
