@@ -6010,7 +6010,10 @@ background-color: #F7F8F9;
   height: 114px;
   object-fit: contain;
 }
-
+.footer__cqc-rating a {
+    display: flex;
+    align-items: center;
+}
 .footer__cqc-rating {
   display: flex;
   align-items: center;
