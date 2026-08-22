@@ -10,19 +10,22 @@ const MainFooter: React.FC = () => {
       <div className="container footer__grid">
         {/* Brand Section */}
         <div className="footer__brand reveal-on-scroll is-visible" style={{ '--reveal-delay': '90ms' } as React.CSSProperties}>
+         
           <img 
             className="footer__logo" 
             src={asset("rumax-footer-logo.svg")} 
             alt="Rumax" 
           />
           <div className="footer__cqc-rating">
+             <a href="https://www.cqc.org.uk/location/1-1285309099" target="_blank">
             <img 
               className="footer__cqc" 
               src={asset("rumax-footer-cqc-badge.svg")} 
               alt="Care Quality Commission" 
             />
             <span>Overall: Good</span>
-            <a href="https://www.homecare.co.uk/homecare/agency.cfm/id/65432233179" target="_blank"><img src="/assets/figma-exported/dom-care-cqc-external.svg" alt="dom-care-cqc__external" className="dom-care-cqc__external" /></a>
+            <img src="/assets/figma-exported/dom-care-cqc-external.svg" alt="dom-care-cqc__external" className="dom-care-cqc__external" />
+            </a>
           </div>
         </div>
 
