@@ -1,78 +1,53 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { reviews } from "@/data/site";
-import { AssetImage } from "@/components/ui/AssetImage";
+import { useEffect, useRef } from "react";
 
 export function Reviews() {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef<HTMLElement>(null);
+  const widgetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const track = trackRef.current;
-    const card = cardRef.current;
-    if (!track || !card) {
-      return;
+    // Load the Homecare.co.uk widget script
+    const script = document.createElement("script");
+    script.async = true;
+    script.className = "tg-review-carousel-widget";
+    script.type = "text/javascript";
+    script.src =
+      "https://api.homecare.co.uk/assets/js/review_widget_carousel.js?displaydiv=tgrcw_ecfeb21e&displayid=65432233179&displaycount=50&displaylogo=true&displayscore=true&displaybackground=true&displayratingreview=true&displaylink=true&displayminoverallrating=0&linksnofollow=false&displayfontsize=large";
+    
+    // Add the script to the widget container
+    if (widgetRef.current) {
+      widgetRef.current.appendChild(script);
     }
 
-    const setOffset = () => {
-      const styles = window.getComputedStyle(track);
-      const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
-      track.style.transform = `translateX(-${activeSlide * (card.getBoundingClientRect().width + gap)}px)`;
+    // Cleanup on unmount
+    return () => {
+      if (widgetRef.current) {
+        const scriptElement = widgetRef.current.querySelector(
+          ".tg-review-carousel-widget"
+        );
+        if (scriptElement) {
+          widgetRef.current.removeChild(scriptElement);
+        }
+      }
     };
-
-    setOffset();
-    window.addEventListener("resize", setOffset);
-    return () => window.removeEventListener("resize", setOffset);
-  }, [activeSlide]);
+  }, []);
 
   return (
     <section className="reviews">
       <div className="container reviews__inner">
         <aside className="review-brand">
-          <AssetImage className="review-brand__logo" name="rumax-review-logo.png" alt="Rumax" />
-          <AssetImage className="review-brand__rating" name="rumax-review-rating.svg" alt="4.8 out of 5" />
-          <AssetImage className="review-brand__stars" name="rumax-review-brand-stars.svg" aria-hidden="true" />
-          <span>Based on 1,258 reviews</span>
-          <p>
-            Powered by <AssetImage name="rumax-homecare-logo.png" alt="homecare.co.uk" />
-          </p>
-          <a className="primary-btn" href="#">
-            Review Us
-          </a>
-          <div className="review-dots" aria-label="Review slides">
-            {reviews.map((review, index) => (
-              <button
-                className={index === activeSlide ? "is-active" : undefined}
-                type="button"
-                aria-label={`Show ${review.name} review`}
-                onClick={() => setActiveSlide(index)}
-                key={review.name}
-              />
-            ))}
-          </div>
+          {/* Optional: Keep your brand info or remove if you want only the widget */}
+          <h2>Client Reviews</h2>
+          <p>See what our clients say about us</p>
         </aside>
 
-        <div className="review-slider" aria-label="Client reviews">
-          <div className="review-track" ref={trackRef}>
-            {[...reviews, ...reviews].map((review, index) => (
-              <article
-                className="review-card"
-                ref={index === 0 ? cardRef : undefined}
-                aria-hidden={index >= reviews.length ? true : undefined}
-                key={`${review.name}-${index}`}
-              >
-                <AssetImage className="avatar" name={review.avatar} aria-hidden="true" />
-                <div>
-                  <h3>{review.name}</h3>
-                  <span>{review.date}</span>
-                  <AssetImage className="review-stars" name="rumax-review-stars.svg" alt="5 stars" />
-                  <p>{review.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+        <div className="review-widget-container">
+          <div
+            className="tg-review-carousel-widget-container"
+            id="tgrcw_ecfeb21e"
+            ref={widgetRef}
+            style={{ width: "100%", borderStyle: "none" }}
+          />
         </div>
       </div>
     </section>
