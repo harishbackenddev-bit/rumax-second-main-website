@@ -340,31 +340,33 @@ const FundingPathway: React.FC<FundingPathwayProps> = ({ className = '' }) => {
                 Care setting <span style={{ color: '#dc3545' }}>*</span>
               </label>
               <div className="option-row option-row-3" data-group="setting">
-                {[
-                  { value: 'own-home', label: 'Own Home', icon: 'home' },
-                  { value: 'with-family', label: 'With Family', icon: 'family' },
-                  { value: 'care-facility', label: 'Care Facility', icon: 'facility' }
-                ].map((item) => (
-                  <div
-                    key={item.value}
-                    className={`option-icon ${formData.careSetting === item.value ? 'option-icon-active' : ''}`}
-                    data-value={item.value}
-                    onClick={() => handleOptionSelect('careSetting', item.value)}
-                    style={{ cursor: isSubmitting ? 'not-allowed' : 'pointer', opacity: isSubmitting ? 0.6 : 1 }}
-                  >
-                    <svg className="option-icon-glyph" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      {item.value === 'own-home' && (
-                        <path d="M4 11l8-7 8 7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      )}
-                      {item.value === 'with-family' && (
-                        <circle cx="12" cy="8" r="3.2" stroke="currentColor" strokeWidth="1.8"/>
-                      )}
-                      {item.value === 'care-facility' && (
-                        <path d="M3 12h4l2-4 3 8 2-6 2 2h5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      )}
-                    </svg>
-                    <span>{item.label}</span>
-                  </div>
+  {[
+    { value: 'own-home', label: 'Own Home', icon: '/images/home.png' },
+    { value: 'with-family', label: 'With Family', icon: '/images/family.png' },
+    { value: 'care-facility', label: 'Care Facility', icon: '/images/care.png' }
+  ].map((item) => (
+    <div
+      key={item.value}
+      className={`option-icon ${formData.careSetting === item.value ? 'option-icon-active' : ''}`}
+      data-value={item.value}
+      onClick={() => handleOptionSelect('careSetting', item.value)}
+      style={{ cursor: isSubmitting ? 'not-allowed' : 'pointer', opacity: isSubmitting ? 0.6 : 1 }}
+    >
+      <img 
+        src={item.icon} 
+        alt={item.label} 
+        className="option-icon-image"
+        style={{
+          width: '24px',
+          height: '24px',
+          objectFit: 'contain',
+          display: 'block'
+        }}
+      />
+      <span>{item.label}</span>
+    </div>
+  ))}
+</div>
                 ))}
               </div>
               {errors.careSetting && <span className="error-text" style={{ color: '#dc3545', fontSize: '0.75rem', display: 'block', marginTop: '0.25rem' }}>{errors.careSetting}</span>}
