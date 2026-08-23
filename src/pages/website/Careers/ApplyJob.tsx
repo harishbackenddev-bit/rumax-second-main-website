@@ -1031,15 +1031,7 @@ const ApplyJob: React.FC = () => {
               <ChevronLeft className="w-5 h-5" />
               <span className="hidden sm:inline">Back to Jobs</span>
             </button>
-            <div className="flex items-center gap-3">
-              <div className="flex items-center justify-center w-10 h-10 rounded-lg" style={{ background: 'linear-gradient(135deg, #1b2280 0%, #601b80 100%)' }}>
-                <span className="text-white font-bold text-xl">R</span>
-              </div>
-              <div>
-                <div className="font-bold text-[#12086f] text-lg">Rumax Limited</div>
-                <div className="text-xs text-[#6d6a78]">Careers Application</div>
-              </div>
-            </div>
+            
           </div>
           <div className="flex items-center gap-2">
             <button
