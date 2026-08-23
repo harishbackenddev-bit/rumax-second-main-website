@@ -47,7 +47,7 @@ const FundingPathway: React.FC<FundingPathwayProps> = ({ className = '' }) => {
   const [formData, setFormData] = useState<FormData>({
     age: '',
     careLevel: '',
-    careSetting: '',
+    careSetting: 'care-facility',
     complexNeeds: '',
     assets: '',
     income: '',
@@ -355,7 +355,6 @@ const FundingPathway: React.FC<FundingPathwayProps> = ({ className = '' }) => {
       <img 
         src={item.icon} 
         alt={item.label} 
-       
       />
       <span>{item.label}</span>
     </div>
