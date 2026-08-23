@@ -341,9 +341,9 @@ const FundingPathway: React.FC<FundingPathwayProps> = ({ className = '' }) => {
               </label>
               <div className="option-row option-row-3" data-group="setting">
   {[
-    { value: 'own-home', label: 'Own Home' },
-    { value: 'with-family', label: 'With Family' },
-    { value: 'care-facility', label: 'Care Facility' }
+    { value: 'own-home', label: 'Own Home', icon: '/images/home.png' },
+    { value: 'with-family', label: 'With Family', icon: '/images/family.png' },
+    { value: 'care-facility', label: 'Care Facility', icon: '/images/care.png' }
   ].map((item) => (
     <div
       key={item.value}
@@ -352,13 +352,15 @@ const FundingPathway: React.FC<FundingPathwayProps> = ({ className = '' }) => {
       onClick={() => handleOptionSelect('careSetting', item.value)}
       style={{ cursor: isSubmitting ? 'not-allowed' : 'pointer', opacity: isSubmitting ? 0.6 : 1 }}
     >
-     
+      <img 
+        src={item.icon} 
+        alt={item.label} 
+       
+      />
       <span>{item.label}</span>
     </div>
   ))}
 </div>
-                ))}
-              </div>
               {errors.careSetting && <span className="error-text" style={{ color: '#dc3545', fontSize: '0.75rem', display: 'block', marginTop: '0.25rem' }}>{errors.careSetting}</span>}
             </div>
 
