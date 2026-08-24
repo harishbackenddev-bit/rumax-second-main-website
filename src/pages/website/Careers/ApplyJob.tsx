@@ -1019,7 +1019,7 @@ const ApplyJob: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#f2ede4]">
+    <div className="min-h-screen bg-[#f2ede4] applyjobs">
       {/* Header */}
       <header className="bg-white border-b border-[#ded9e6] sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
@@ -1145,7 +1145,7 @@ const ApplyJob: React.FC = () => {
                 disabled={loading}
                 className="px-10 py-4 text-white rounded-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all font-bold text-base flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{ 
-                  background: 'linear-gradient(135deg, #1fae63 0%, #17b169 100%)',
+                  background: '#601b80',
                   boxShadow: '0 18px 44px #221a361f'
                 }}
               >
