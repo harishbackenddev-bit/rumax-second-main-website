@@ -203,7 +203,9 @@ section.funding-pathway .option-row.option-row-3 .option-icon svg {
   gap: 48px;
   font-size: 18px;
 }
-
+.applyjobs .bg-\[\#22C55E\] {
+    background-color: #601b80 !important;
+}
 .primary-nav>a,
 .nav-dropdown__trigger {
   display: inline-flex;
