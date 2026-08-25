@@ -10,34 +10,9 @@ import Step3 from '@/components/website/applyjob/Step3';
 import Step4 from '@/components/website/applyjob/Step4';
 import Step5 from '@/components/website/applyjob/Step5';
 import Step6 from '@/components/website/applyjob/Step6';
+import resumeParserService from '@/utils/resumeParser';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-
-// ✅ All UK Regions (Default locations)
-const UK_REGIONS = [
-  // England
-  "London",
-  "South East",
-  "South West",
-  "East of England",
-  "West Midlands",
-  "East Midlands",
-  "Yorkshire and the Humber",
-  "North West",
-  "North East",
-  // Scotland
-  "Scotland",
-  // Wales
-  "Wales",
-  // Northern Ireland
-  "Northern Ireland"
-];
-
-// ✅ Combine UK Regions with any API locations
-const getCombinedLocations = (apiLocations: string[] = []) => {
-  const combined = new Set([...UK_REGIONS, ...apiLocations]);
-  return Array.from(combined).sort();
-};
 
 interface JobDetails {
   _id: string;
@@ -276,24 +251,21 @@ const ApplyJob: React.FC = () => {
     }
   };
 
-  // ---- Handlers for Step 1 ----
-  const handlePersonalChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setPersonalInfo(prev => ({ ...prev, [name]: value }));
-  };
-
+  // ---- Updated File Upload Handler with AI Integration ----
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>, fileType: string) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    console.log('📎 File selected:', file.name, file.type, file.size);
 
     if (file.size > 10 * 1024 * 1024) {
       toast.error('File size must be less than 10MB');
       return;
     }
 
-    const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-    if (!validTypes.includes(file.type) && !file.name.match(/\.(pdf|doc|docx)$/i)) {
-      toast.error('Please upload PDF, DOC, or DOCX files only');
+    const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain'];
+    if (!validTypes.includes(file.type) && !file.name.match(/\.(pdf|doc|docx|txt)$/i)) {
+      toast.error('Please upload PDF, DOC, DOCX, or TXT files only');
       return;
     }
 
@@ -305,20 +277,44 @@ const ApplyJob: React.FC = () => {
       setResumeFile(file);
       setResumeUrl(url);
       setIsResumeUploading(true);
-      // Simulate resume parsing
-      setTimeout(() => {
+
+      try {
+        const apiKey = import.meta.env.VITE_OPENAI_API_KEY || '';
+        
+        if (!apiKey) {
+          toast.error('OpenAI API key not configured. Please add VITE_OPENAI_API_KEY to .env');
+          setIsResumeUploading(false);
+          return;
+        }
+
+        toast.loading('🤖 Analyzing your resume with AI...', { id: 'resume-parsing' });
+        
+        const parsedData = await resumeParserService.parseResumeWithAI(file, apiKey);
+        console.log('✅ AI Parsed Data:', parsedData);
+        
         setPersonalInfo(prev => ({
           ...prev,
-          firstName: 'John',
-          lastName: 'Doe',
-          email: 'john.doe@example.com',
-          phone: '+44 7700 900000',
-          nationality: 'British',
-          rightToWork: 'British Citizen'
+          firstName: parsedData.firstName || prev.firstName,
+          lastName: parsedData.lastName || prev.lastName,
+          email: parsedData.email || prev.email,
+          phone: parsedData.phone || prev.phone,
+          dateOfBirth: parsedData.dateOfBirth || prev.dateOfBirth,
+          addressLine1: parsedData.addressLine1 || prev.addressLine1,
+          addressLine2: parsedData.addressLine2 || prev.addressLine2 || '',
+          city: parsedData.city || prev.city,
+          county: parsedData.county || prev.county,
+          postcode: parsedData.postcode || prev.postcode,
+          nationality: parsedData.nationality || prev.nationality,
+          rightToWork: parsedData.rightToWork || prev.rightToWork,
         }));
+
+        toast.success('✅ Resume uploaded and AI auto-filled successfully!', { id: 'resume-parsing' });
+      } catch (error: any) {
+        console.error('❌ AI parsing error:', error);
+        toast.error(error.message || 'Failed to parse resume with AI. Please fill in manually.', { id: 'resume-parsing' });
+      } finally {
         setIsResumeUploading(false);
-        toast.success('Resume uploaded and information auto-filled!');
-      }, 1500);
+      }
     } else if (fileType === 'coverLetter') {
       setCoverLetterFile(file);
       setCoverLetterUrl(url);
@@ -373,6 +369,12 @@ const ApplyJob: React.FC = () => {
         referencesUrl: ''
       }));
     }
+  };
+
+  // ---- Handlers for Step 1 ----
+  const handlePersonalChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setPersonalInfo(prev => ({ ...prev, [name]: value }));
   };
 
   // ---- Handlers for Step 2 ----
@@ -748,7 +750,6 @@ const ApplyJob: React.FC = () => {
       let candidateId = existingCandidateId;
       let authToken = existingToken;
 
-      // Step 1: Create/Register candidate if not already registered
       if (!authToken || !candidateId) {
         const createPayload = {
           firstName: personalInfo.firstName,
@@ -814,7 +815,6 @@ const ApplyJob: React.FC = () => {
         toast.success('Candidate profile created successfully!');
       }
 
-      // Step 2: Apply for the job
       const applyPayload = {
         candidateId: candidateId,
         jobId: jobDetails?._id || null,
@@ -896,9 +896,6 @@ const ApplyJob: React.FC = () => {
 
   // ---- Render Step ----
   const renderStep = () => {
-    // Combine UK Regions with API locations
-    const combinedLocations = getCombinedLocations(jobDetails?.locations || []);
-
     switch(step) {
       case 1:
         return (
@@ -914,6 +911,7 @@ const ApplyJob: React.FC = () => {
             onChange={handlePersonalChange}
             onFileUpload={handleFileUpload}
             onFileRemove={handleFileRemove}
+            setFormData={setPersonalInfo}
           />
         );
       case 2:
@@ -924,7 +922,6 @@ const ApplyJob: React.FC = () => {
             onLocationToggle={handleLocationToggle}
             onAvailabilityToggle={handleAvailabilityToggle}
             onRadioChange={handleRadioChange}
-            locations={combinedLocations}
           />
         );
       case 3:
@@ -1009,64 +1006,40 @@ const ApplyJob: React.FC = () => {
 
   if (fetchingJob) {
     return (
-      <div className="min-h-screen bg-[#f2ede4] flex items-center justify-center">
+      <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center">
         <div className="text-center">
-          <Loader2 className="w-12 h-12 animate-spin text-[#601b80] mx-auto mb-4" />
-          <p className="text-[#5a5866]">Loading job details...</p>
+          <Loader2 className="w-12 h-12 animate-spin text-[#0F4C81] mx-auto mb-4" />
+          <p className="text-gray-600">Loading job details...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#f2ede4] applyjobs">
+    <div className="min-h-screen bg-[#F8FAFC] applyalljobs">
       {/* Header */}
-      <header className="bg-white border-b border-[#ded9e6] sticky top-0 z-50">
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
               onClick={() => navigate('/careers')}
-              className="flex items-center gap-2 text-[#5a5866] hover:text-[#601b80] transition-colors"
+              className="flex items-center gap-2 text-gray-600 hover:text-[#0F4C81] transition-colors"
             >
               <ChevronLeft className="w-5 h-5" />
               <span className="hidden sm:inline">Back to Jobs</span>
             </button>
-            
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => toast.success('Progress saved!')}
-              className="flex items-center gap-2 px-4 py-2 text-sm text-[#5a5866] hover:bg-[#f7f7fa] rounded-lg transition-colors"
-            >
-              <Save className="w-4 h-4" />
-              <span className="hidden sm:inline">Save Progress</span>
-            </button>
-            <button
-              onClick={() => {
-                if (confirm('Are you sure you want to exit? Your progress will be lost.')) {
-                  navigate('/jobs');
-                }
-              }}
-              className="flex items-center gap-2 px-4 py-2 text-sm text-[#5a5866] hover:bg-[#f7f7fa] rounded-lg transition-colors"
-            >
-              <X className="w-4 h-4" />
-              <span className="hidden sm:inline">Exit Application</span>
-            </button>
           </div>
         </div>
-        <div className="h-1 bg-[#e3e1ea]">
+        <div className="h-1 bg-gray-200">
           <div 
-            className="h-full transition-all duration-300"
-            style={{ 
-              width: `${(step / 6) * 100}%`,
-              background: 'linear-gradient(135deg, #1b2280 0%, #601b80 100%)'
-            }}
+            className="h-full bg-[#0F4C81] transition-all duration-300"
+            style={{ width: `${(step / 6) * 100}%` }}
           />
         </div>
       </header>
 
       {/* Step Indicators */}
-      <div className="bg-white border-b border-[#ded9e6]">
+      <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             {steps.map((s) => (
@@ -1077,8 +1050,8 @@ const ApplyJob: React.FC = () => {
                       <div 
                         className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-all ${
                           step >= s.id 
-                            ? 'bg-[#12086f] text-white' 
-                            : 'bg-[#e3e1ea] text-[#6d6a78]'
+                            ? 'bg-[#0F4C81] text-white' 
+                            : 'bg-gray-200 text-gray-500'
                         }`}
                       >
                         {step > s.id ? (
@@ -1090,12 +1063,12 @@ const ApplyJob: React.FC = () => {
                     </div>
                     {s.id < 6 && (
                       <div className={`flex-1 h-0.5 mx-2 ${
-                        step > s.id ? 'bg-[#12086f]' : 'bg-[#e3e1ea]'
+                        step > s.id ? 'bg-[#0F4C81]' : 'bg-gray-200'
                       }`} />
                     )}
                   </div>
                   <div className={`mt-2 text-xs sm:text-sm text-center transition-all ${
-                    step >= s.id ? 'text-[#12086f] font-semibold' : 'text-[#6d6a78]'
+                    step >= s.id ? 'text-[#0F4C81] font-semibold' : 'text-gray-500'
                   }`}>
                     <span className="hidden lg:inline">{s.label}</span>
                     <span className="lg:hidden">{s.shortLabel}</span>
@@ -1109,15 +1082,15 @@ const ApplyJob: React.FC = () => {
 
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-3xl shadow-lg p-8 sm:p-10" style={{ boxShadow: '0 18px 44px #221a361f' }}>
+        <div className="bg-white rounded-3xl shadow-lg shadow-gray-100 p-8 sm:p-10">
           {renderStep()}
           
           {/* Navigation Buttons */}
-          <div className="flex justify-between pt-8 mt-8 border-t border-[#ded9e6]">
+          <div className="flex justify-between pt-8 mt-8 border-t border-gray-200">
             <button
               type="button"
               onClick={handleBack}
-              className={`px-8 py-4 border-2 border-[#ded9e6] text-[#5a5866] rounded-xl hover:bg-[#f7f7fa] hover:border-[#8b899a] hover:shadow-md transition-all font-bold flex items-center gap-2 group ${
+              className={`px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 hover:border-gray-400 hover:shadow-md transition-all font-bold flex items-center gap-2 group ${
                 step === 1 ? 'invisible' : ''
               }`}
             >
@@ -1129,11 +1102,7 @@ const ApplyJob: React.FC = () => {
               <button
                 type="button"
                 onClick={handleNext}
-                className="px-10 py-4 text-white rounded-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all font-bold text-base flex items-center gap-3 group"
-                style={{ 
-                  background: 'linear-gradient(135deg, #1b2280 0%, #222280 7.14%, #282380 14.29%, #2d2380 21.43%, #322380 28.57%, #372380 35.71%, #3c2280 42.86%, #412280 50%, #452180 57.14%, #4a2180 64.29%, #4e2080 71.43%, #531f80 78.57%, #571e80 85.71%, #5c1d80 92.86%, #601b80 100%)',
-                  boxShadow: '0 18px 44px #221a361f'
-                }}
+                className="px-10 py-4 bg-gradient-to-r from-[#0F4C81] to-[#1565a8] text-white rounded-xl hover:shadow-2xl hover:shadow-[#0F4C81]/30 hover:scale-[1.02] active:scale-[0.98] transition-all font-bold text-base flex items-center gap-3 group"
               >
                 Continue to Next Step
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -1143,11 +1112,7 @@ const ApplyJob: React.FC = () => {
                 type="button"
                 onClick={handleSubmit}
                 disabled={loading}
-                className="px-10 py-4 text-white rounded-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all font-bold text-base flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
-                style={{ 
-                  background: '#601b80',
-                  boxShadow: '0 18px 44px #221a361f'
-                }}
+                className="px-10 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl hover:shadow-2xl hover:shadow-green-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all font-bold text-base flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <>
@@ -1167,8 +1132,8 @@ const ApplyJob: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-[#ded9e6] py-4 mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-[#6d6a78]">
+      <footer className="bg-white border-t border-gray-200 py-4 mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
           © 2026 Rumax Limited. All rights reserved. | Privacy Policy | Terms of Service
         </div>
       </footer>
