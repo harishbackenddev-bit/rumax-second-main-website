@@ -466,22 +466,32 @@ const CareCostCalculator: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="cc-form-submit">
-                  <div className="cc-cta-wrap">
-                    <button
-                      type="submit"
-                      className="btn btn--primary"
-                      disabled={isSubmitting}
-                      style={{
-                        opacity: isSubmitting ? 0.7 : 1,
-                        cursor: isSubmitting ? 'not-allowed' : 'pointer'
-                      }}
-                    >
-                      {isSubmitting ? "Submitting..." : "Review Your Estimate"}
-                    </button>
-      
-                  </div>
-                </div>
+<div className="cc-form-submit">
+  <div className="cc-cta-wrap">
+
+    <button
+      type="button"
+      className="btn btn--primary"
+      onClick={() => goToStep(1)}
+      disabled={isSubmitting}
+    >
+      ← Back
+    </button>
+
+    <button
+      type="submit"
+      className="btn btn--primary"
+      disabled={isSubmitting}
+      style={{
+        opacity: isSubmitting ? 0.7 : 1,
+        cursor: isSubmitting ? 'not-allowed' : 'pointer'
+      }}
+    >
+      {isSubmitting ? "Submitting..." : "Review Your Estimate"}
+    </button>
+
+  </div>
+</div>
               </form>
             </div>
           </>

@@ -344,8 +344,10 @@
 }
 
 .cc-cta-wrap {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-flex;
+    gap: 15px;
+    align-items: center;
 }
 
 .cc-badge {
