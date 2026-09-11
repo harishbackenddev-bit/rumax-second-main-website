@@ -279,10 +279,10 @@ const CareCostCalculator: React.FC = () => {
                 />
                 <p className="cc-slider-block__selected">{getFrequencyLabel(frequency)}</p>
                 <div className="cc-slider-block__ticks">
-                  <span className="cc-slider-block__tick">Just a few hours<br />(1-5 hrs)</span>
-                  <span className="cc-slider-block__tick">Daily Visits</span>
-                  <span className="cc-slider-block__tick">Overnight Support</span>
-                  <span className="cc-slider-block__tick">Full Live-in Care</span>
+                  <span className="cc-slider-block__tick">Evening</span>
+                  <span className="cc-slider-block__tick">Day hourly rate- £26/hr</span>
+                  <span className="cc-slider-block__tick">Night hourly rate - £29/hr</span>
+                  <span className="cc-slider-block__tick">Live in weekly charge from £1200</span>
                 </div>
               </div>
 
