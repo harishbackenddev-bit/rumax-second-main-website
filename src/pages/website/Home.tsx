@@ -8,10 +8,13 @@ import { Reviews } from '@/components/website/home/Reviews';
 import { TeamVideos } from '@/components/website/home/TeamVideos';
 import { CareCta } from '@/components/website/home/CareCta';
 import { Locations } from '@/components/website/home/Locations';
+import CookieConsent from "@/components/CookieConsent"; // path apne hisaab se adjust karein
 
 function Home() {
   return (
     <div className="test">
+              {/* ✅ Cookie Consent yahan add karo */}
+      <CookieConsent />
       <Hero />
       <Services />
       <Compliance />
