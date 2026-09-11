@@ -87,12 +87,12 @@ const supportedLivingReasons = [
 
 const supportedLivingFaqs = [
   "What qualifications, training, and experience do your mobile research nurses have?",
-  "2. How do you ensure full ICH GCP E6 (R3) compliance and protocol adherence during home visits?",
-  "3. What is your process for scheduling and coordinating home visits with the investigator site?",
-  "4. How do you manage patient safety, emergency situations, and adverse events during home visits?",
-  "5. How is clinical data collected, documented, and integrated with the investigator site and EDC system?",
-  "6. What geographic areas and countries do you cover, and how do you handle rural or remote patients?",
-  "7. What are the typical costs and pricing models for your mobile nursing services?"
+  "How do you ensure full ICH GCP E6 (R3) compliance and protocol adherence during home visits?",
+  "What is your process for scheduling and coordinating home visits with the investigator site?",
+  "How do you manage patient safety, emergency situations, and adverse events during home visits?",
+  "How is clinical data collected, documented, and integrated with the investigator site and EDC system?",
+  "What geographic areas and countries do you cover, and how do you handle rural or remote patients?",
+  "What are the typical costs and pricing models for your mobile nursing services?"
 ];
 
 export default function SupportedLivingPage() {

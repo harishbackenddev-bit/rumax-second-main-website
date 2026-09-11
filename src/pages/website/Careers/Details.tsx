@@ -169,7 +169,7 @@ const Details: React.FC = () => {
           >
             Apply Now
           </a>
-          <a href="#" className="btn btn-outline-white">Schedule a Capacity Presentation</a>
+          {/* <a href="#" className="btn btn-outline-white">Schedule a Capacity Presentation</a> */}
         </div>
       </section>
 
