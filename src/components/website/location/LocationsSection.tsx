@@ -1,38 +1,38 @@
 import React from "react";
+
 type Location = {
   name: string;
+  link: string;   // ✅ added
 };
 
 const locations: Location[] = [
-  { name: "Rayleigh",link:"/locations/rayleigh" },
-  { name: "Wickford",link:"/locations/wickford" },
-  { name: "Basildon",link:"/locations/basildon" },
-  { name: "Brentwood",link:"/locations/brentwood" },
-  { name: "Leigh on Sea",link:"/locations/leigh-on-sea" },
-  { name: "Southend",link:"/locations" },
-  { name: "Thundersley",link:"/locations" },
-  { name: "Benfleet",link:"/locations" },
-  { name: "Hadleigh",link:"/locations" },
-  { name: "Hullbridge",link:"/locations" },
-  { name: "Pitsea",link:"/locations" },
-  { name: "Laindon",link:"/locations" },
-  { name: "Hockley",link:"/locations" },
-  { name: "Billericay",link:"/locations" },
-  { name: "Chelmsford",link:"/locations" },
-  { name: "Maldon",link:"/locations" },
-  { name: "Rawreth",link:"/locations" },
-  { name: "Eastwood",link:"/locations" },
-  { name: "Southend on Sea",link:"/locations" },
+  { name: "Rayleigh", link: "/locations/rayleigh" },
+  { name: "Wickford", link: "/locations/wickford" },
+  { name: "Basildon", link: "/locations/basildon" },
+  { name: "Brentwood", link: "/locations/brentwood" },
+  { name: "Leigh on Sea", link: "/locations/leigh-on-sea" },
+  { name: "Southend", link: "/locations" },
+  { name: "Thundersley", link: "/locations" },
+  { name: "Benfleet", link: "/locations" },
+  { name: "Hadleigh", link: "/locations" },
+  { name: "Hullbridge", link: "/locations" },
+  { name: "Pitsea", link: "/locations" },
+  { name: "Laindon", link: "/locations" },
+  { name: "Hockley", link: "/locations" },
+  { name: "Billericay", link: "/locations" },
+  { name: "Chelmsford", link: "/locations" },
+  { name: "Maldon", link: "/locations" },
+  { name: "Rawreth", link: "/locations" },
+  { name: "Eastwood", link: "/locations" },
+  { name: "Southend on Sea", link: "/locations" },
 ];
 
 export default function LocationsSection() {
   return (
     <section className="areas-we-serve-section">
       <div className="container">
-
         <div className="locations__title">
           <h2>Areas We Serve</h2>
-
           <p>
             Our dedicated care teams are proud to serve communities across
             Essex, bringing professional, compassionate support directly to
@@ -56,9 +56,7 @@ export default function LocationsSection() {
 
               <span className="location-card__content">
                 <strong>{location.name}</strong>
-                <small>
-                  Professional home care services available
-                </small>
+                <small>Professional home care services available</small>
               </span>
             </a>
           ))}
@@ -66,7 +64,6 @@ export default function LocationsSection() {
 
         <div className="service-availability">
           <h3>CHECK SERVICE AVAILABILITY NEAR YOU</h3>
-
           <p>
             Rumax Limited is expanding. Enter your postcode to see if we're
             in your area.
@@ -78,17 +75,14 @@ export default function LocationsSection() {
               placeholder="E.g., SS1 1AA"
               aria-label="Postcode"
             />
-
             <button type="submit">
-              <span> <img
-                  src="/images/icon.png"
-                  alt=""
-                /></span>
+              <span>
+                <img src="/images/icon.png" alt="" />
+              </span>
               Check
             </button>
           </form>
         </div>
-
       </div>
     </section>
   );
