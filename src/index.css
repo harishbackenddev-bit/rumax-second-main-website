@@ -316,7 +316,7 @@ section.funding-pathway .option-row.option-row-3 .option-icon svg {
 .primary-btn,
 .postcode-row button,
 .callback-card button,
-.area-pills a {
+.area-pills button {
   text-decoration: none;
 }
 
@@ -496,7 +496,7 @@ section.funding-pathway .option-row.option-row-3 .option-icon svg {
   gap: 14px;
 }
 
-.area-pills a {
+.area-pills button {
   min-height: 52px;
   display: grid;
   place-items: center;
@@ -6360,7 +6360,7 @@ background-color: #F7F8F9;
     gap: 10px;
   }
 
-  .area-pills a {
+  .area-pills button {
     font-size: 16px;
   }
 
@@ -6489,7 +6489,7 @@ background-color: #F7F8F9;
     font-size: 22px;
   }
 
-  .area-pills a {
+  .area-pills button {
     font-size: 15px;
   }
 
@@ -7790,7 +7790,7 @@ background-color: #F7F8F9;
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .area-pills a {
+  .area-pills button {
     min-height: 42px;
     font-size: 13px;
   }
@@ -7921,7 +7921,7 @@ background-color: #F7F8F9;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .area-pills a {
+  .area-pills button {
     min-height: 44px;
     font-size: 14px;
   }
@@ -9169,7 +9169,7 @@ section#book-training {
   gap: clamp(8px, 0.73vw, 14px);
 }
 
-.area-pills a {
+.area-pills button {
   min-height: clamp(40px, 2.55vw, 49px);
   font-size: clamp(10px, 0.94vw, 18px);
 }
@@ -9244,7 +9244,7 @@ section#book-training {
     gap: 8px;
   }
 
-  .area-pills a {
+  .area-pills button {
     min-height: 40px;
     font-size: 11px;
   }
@@ -13163,7 +13163,7 @@ section.page-section.training-portfolio .training-portfolio__grid article {
     gap: 10px;
   }
 
-  .area-pills a {
+  .area-pills button {
     min-height: 44px;
     font-size: 14px;
   }
@@ -13275,7 +13275,7 @@ section.page-section.training-portfolio .training-portfolio__grid article {
     gap: 8px;
   }
 
-  .area-pills a {
+  .area-pills button {
     min-height: 38px;
     font-size: 12px;
     padding: 4px 8px;
@@ -13400,7 +13400,7 @@ section.page-section.training-portfolio .training-portfolio__grid article {
     gap: 6px;
   }
 
-  .area-pills a {
+  .area-pills button {
     min-height: 32px;
     font-size: 11px;
     padding: 4px 6px;
@@ -13490,7 +13490,7 @@ section.page-section.training-portfolio .training-portfolio__grid article {
     font-size: 12px;
   }
 
-  .area-pills a {
+  .area-pills button {
     min-height: 28px;
     font-size: 10px;
     padding: 2px 4px;
@@ -13560,7 +13560,7 @@ section.page-section.training-portfolio .training-portfolio__grid article {
     height: 38px;
   }
 
-  .area-pills a {
+  .area-pills button {
     min-height: 34px;
     font-size: 12px;
   }
@@ -13623,7 +13623,7 @@ section.page-section.training-portfolio .training-portfolio__grid article {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .area-pills a {
+  .area-pills button {
     min-height: 40px;
     font-size: 13px;
   }
@@ -13675,7 +13675,7 @@ section.page-section.training-portfolio .training-portfolio__grid article {
     grid-template-columns: repeat(5, 1fr);
   }
 
-  .area-pills a {
+  .area-pills button {
     min-height: 44px;
     font-size: 15px;
   }

@@ -13,10 +13,9 @@ export function Hero() {
   const [modal, setModal] = useState<ModalState>(null);
   const [matchedCode, setMatchedCode] = useState<string>("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const cleaned = query.trim();
+  // ✅ Common function - form aur pills dono use karenge
+  function checkAvailability(value: string) {
+    const cleaned = value.trim();
     if (!cleaned) return;
 
     const match = findPostcode(cleaned);
@@ -25,8 +24,20 @@ export function Hero() {
       setMatchedCode(match);
       setModal("available");
     } else {
+      setMatchedCode(cleaned);
       setModal("notAvailable");
     }
+  }
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    checkAvailability(query);
+  }
+
+  // ✅ Area pill click
+  function handleAreaClick(area: string) {
+    setQuery(area); // optional: input bhi fill ho jaye
+    checkAvailability(area);
   }
 
   function closeModal() {
@@ -70,11 +81,17 @@ export function Hero() {
               </button>
             </div>
 
+            {/* ✅ Clickable pills - <a> jaisa hi dikhega */}
             <div className="area-pills" aria-label="Popular service areas">
               {areaPills.map((area) => (
-                <a href="#" key={area}>
+                <button
+                  type="button"
+                  key={area}
+                  onClick={() => handleAreaClick(area)}
+                  className="area-pill"
+                >
                   {area}
-                </a>
+                </button>
               ))}
             </div>
           </form>
